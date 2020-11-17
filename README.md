@@ -13,5 +13,5 @@
   Yes, it uses **[TagLibSharp](http://github.com/mono/taglib-sharp)**
   
 ### Where are releases?
-  Now, i don't publish a first release. But, soon it will be *published*.
+  Now, I have not publish a first release yet. But soon, it will be *published*.
   
