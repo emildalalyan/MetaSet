@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MetaSet
 {
@@ -90,6 +91,7 @@ namespace MetaSet
         private void playATrackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Functions.IsOpened()) return;
+            if (!File.Exists(MetaSet.File.Name)) return;
             System.Diagnostics.Process.Start(MetaSet.File.Name);
         }
 
@@ -222,7 +224,7 @@ namespace MetaSet
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!Functions.IsOpened()) return;
-            if (Functions.WeMayToGetTag()) ((TagLib.Id3v2.Tag)MetaSet.File.GetTag(TagLib.TagTypes.Id3v2)).SetTextFrame("TCMP", (this.checkBox1.Checked) ? "1" : "0");
+            if (Functions.WeCanGetTag()) ((TagLib.Id3v2.Tag)MetaSet.File.GetTag(TagLib.TagTypes.Id3v2)).SetTextFrame("TCMP", (this.checkBox1.Checked) ? "1" : "0");
             else
             {
                 MessageBox.Show("This file doesn't support it.", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -246,6 +248,29 @@ namespace MetaSet
             {
                 this.textBox12.Text = "";
             }
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            MetaSet.File.Tag.ISRC = textBox13.Text;
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Functions.SaveAsFunction();
+        }
+
+        private void textBox14_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            MetaSet.File.Tag.AmazonId = textBox14.Text;
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            MetaSet.File.Tag.RemixedBy = textBox15.Text;
         }
     }
 }

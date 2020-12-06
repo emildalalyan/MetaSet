@@ -9,7 +9,7 @@ namespace MetaSet
 {
     static class MetaSet
     {
-        static public readonly string Version = "1.0-stable";
+        static public readonly string Version = typeof(MetaSet).Assembly.GetName().Version.Major.ToString() + "." + typeof(MetaSet).Assembly.GetName().Version.Minor.ToString() + "-stable";
         static public TagLib.File File;
         static public Form1 MainForm;
         static public readonly string[] FormatSupport = new string[]
@@ -53,8 +53,27 @@ namespace MetaSet
             else return dec.ToString() + plus;
         }
     }
-    static class Functions
+    static partial class Functions
     {
+        static public void SaveAsFunction()
+        {
+            using(SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = $"File (*{Path.GetExtension(MetaSet.File.Name)})|*{Path.GetExtension(MetaSet.File.Name)}"
+            })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.Length > 0)
+                {
+                    File.Copy(MetaSet.File.Name, sfd.FileName, true);
+                    using (TagLib.File tf = TagLib.File.Create(sfd.FileName))
+                    {
+                        MetaSet.File.Tag.CopyTo(tf.Tag, true);
+                        tf.Save();
+                    }
+                    OpenFile(sfd.FileName);
+                }
+            }
+        }
         static public void CopyInfoAboutTrack()
         {
             Clipboard.SetText("Title: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Title)
@@ -68,7 +87,7 @@ namespace MetaSet
             MetaSet.File.Tag.Pictures = null;
             MetaSet.MainForm.pictureBox1.Image = null;
         }
-        static public bool WeMayToGetTag()
+        static public bool WeCanGetTag()
         {
             if (!IsOpened()) return false;
             return (MetaSet.File.GetTag(TagLib.TagTypes.Id3v2) is TagLib.Tag);
@@ -77,7 +96,7 @@ namespace MetaSet
         {
             using (OpenFileDialog a = new OpenFileDialog
             {
-                Filter = "JPEG (*.jpg)|*.jpg"
+                Filter = "Joint Photographic Experts Group (*.jpg)|*.jpg|Portable Network Graphics (*.png)|*.png"
             })
             {
                 if (a.ShowDialog() == DialogResult.OK)
@@ -87,7 +106,7 @@ namespace MetaSet
                     MetaSet.File.Tag.Pictures = new TagLib.Picture[1] {
                         new TagLib.Picture
                         {
-                            MimeType = "image/jpeg",
+                            MimeType = (Path.GetExtension(a.FileName) == ".png" ? "image/png" : "image/jpeg"),
                             Type = TagLib.PictureType.Media,
                             Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
                         }
@@ -98,12 +117,13 @@ namespace MetaSet
         }
         static public int ChangeACover(string filename)
         {
+            if (Path.GetExtension(filename) != ".png" && Path.GetExtension(filename) != ".jpg") return 0;
             MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromFile(filename);
 
             MetaSet.File.Tag.Pictures = new TagLib.Picture[1] {
                 new TagLib.Picture
                 {
-                    MimeType = "image/jpeg",
+                    MimeType = (Path.GetExtension(filename) == ".png" ? "image/png" : "image/jpeg"),
                     Type = TagLib.PictureType.Media,
                     Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
                 }
@@ -116,23 +136,44 @@ namespace MetaSet
 
             using (SaveFileDialog a = new SaveFileDialog
             {
-                Filter = "JPEG (*.jpg)|*.jpg"
+                Filter = $"{MetaSet.File.Tag.Pictures[0].MimeType} (*.{MetaSet.File.Tag.Pictures[0].MimeType.Split('/')[1]})|*.{MetaSet.File.Tag.Pictures[0].MimeType.Split('/')[1]}"
             })
             {
                 if (a.ShowDialog() == DialogResult.OK && a.FileName.Length > 0)
                 {
-                    MetaSet.MainForm.pictureBox1.Image.Save(a.FileName, ImageFormat.Jpeg);
+                    try
+                    {
+                        MetaSet.MainForm.pictureBox1.Image.Save(a.FileName);
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            using (FileStream b = new FileStream(a.FileName, FileMode.OpenOrCreate))
+                            {
+                                b.Write(MetaSet.File.Tag.Pictures[0].Data.Data, 0, MetaSet.File.Tag.Pictures[0].Data.Data.Length);
+                                b.Flush();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Unknown error with cover.", "Unexpected error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
                 
         }
         static public int CloseFile()
         {
-            if (IsOpened()) MetaSet.File.Dispose();
-
+            if (IsOpened())
+            {
+                MetaSet.File.Dispose();
+            }
+            //MetaSet.File.Tag.
             MetaSet.File =              null;
             MetaSet.MainForm.Text =     "MetaSet";
-            MetaSet.MainForm.saveToolStripMenuItem.Enabled = false;
+            MetaSet.MainForm.saveToolStripMenuItem.Enabled =                        false;
             MetaSet.MainForm.closeToolStripMenuItem.Enabled =                       false;
             MetaSet.MainForm.extractACoverToolStripMenuItem.Enabled =               false;
             MetaSet.MainForm.copyInformationAboutTrackToolStripMenuItem.Enabled =   false;
@@ -149,10 +190,15 @@ namespace MetaSet
             MetaSet.MainForm.textBox9.Text =        "";
             MetaSet.MainForm.textBox10.Text =       "";
             MetaSet.MainForm.textBox11.Text =       "";
+            MetaSet.MainForm.textBox13.Text =       "";
             MetaSet.MainForm.checkBox1.Checked =    false;
             MetaSet.MainForm.checkBox1.Enabled =    true;
             MetaSet.MainForm.pictureBox1.Image =    null;
             MetaSet.MainForm.textBox12.Text =       "";
+            MetaSet.MainForm.textBox14.Text =       "";
+            MetaSet.MainForm.textBox15.Text =       "";
+            MetaSet.MainForm.saveAsToolStripMenuItem.Enabled = false;
+            
             return 0;
         }
         static public bool IsOpened()
@@ -180,6 +226,7 @@ namespace MetaSet
                     {
                         MetaSet.File = TagLib.File.Create(a.FileName);
                         MetaSet.MainForm.Text = "MetaSet — " + Path.GetFileName(MetaSet.File.Name);
+                        
                         ReadIt();
                         return 0;
                     }
@@ -208,6 +255,7 @@ namespace MetaSet
                 {
                     MetaSet.File = TagLib.File.Create(str);
                     MetaSet.MainForm.Text = "MetaSet — " + Path.GetFileName(MetaSet.File.Name);
+                    
                     ReadIt();
                     return 0;
                 }
@@ -226,14 +274,19 @@ namespace MetaSet
                 MetaSet.File.Save();
                 SystemSounds.Beep.Play();
             }
-            catch(System.IO.IOException e)
+            catch(System.IO.IOException)
             {
-                MessageBox.Show(e.GetType().Name + " was appeared. Maybe, this file used by another application.", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("System.IO.IOException was appeared. Maybe, this file used by another application.", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show($"{e.GetType().Name} was appeared. HRESULT was: {"0x" + e.HResult.ToString("X")}", "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
         static public int ReadIt()
         {
+            MetaSet.File.Mode = TagLib.File.AccessMode.Read;
             MetaSet.MainForm.copyInformationAboutTrackToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.closeToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.extractACoverToolStripMenuItem.Enabled = true;
@@ -249,15 +302,20 @@ namespace MetaSet
             MetaSet.MainForm.textBox9.Text = MetaSet.File.Tag.Copyright;
             if (MetaSet.File.Tag.Composers.Length > 0) MetaSet.MainForm.textBox8.Text = MetaSet.File.Tag.Composers[0];
             MetaSet.MainForm.textBox10.Text = MetaSet.File.Tag.Disc.ToString();
-            if (WeMayToGetTag()) MetaSet.MainForm.checkBox1.Checked = (((TagLib.Id3v2.Tag)MetaSet.File.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1");
+            if (WeCanGetTag()) MetaSet.MainForm.checkBox1.Checked = (((TagLib.Id3v2.Tag)MetaSet.File.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1");
             else MetaSet.MainForm.checkBox1.Enabled = false;
             if(MetaSet.File.Tag.Performers is string[]) MetaSet.MainForm.textBox11.Text = String.Join(",", MetaSet.File.Tag.Performers);
             MetaSet.MainForm.textBox12.Text = MetaSet.File.Tag.BeatsPerMinute.ToString();
             MetaSet.MainForm.saveToolStripMenuItem.Enabled = true;
+            MetaSet.MainForm.textBox13.Text = MetaSet.File.Tag.ISRC;
+            MetaSet.MainForm.saveAsToolStripMenuItem.Enabled = true;
+            MetaSet.MainForm.textBox14.Text = MetaSet.File.Tag.AmazonId;
+            MetaSet.MainForm.textBox15.Text = MetaSet.File.Tag.RemixedBy;
 
             if (MetaSet.File.Tag.Pictures.Length > 0)
             {
                 if (MetaSet.File.Tag.Pictures[0].Data.Count < 1) { return 0; }
+                if (MetaSet.File.Tag.Pictures[0].MimeType == "image/jpg") MetaSet.File.Tag.Pictures[0].MimeType = "image/jpeg";
                 using (MemoryStream ms = new MemoryStream(MetaSet.File.Tag.Pictures[0].Data.Data))
                 {
                     MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromStream(ms);

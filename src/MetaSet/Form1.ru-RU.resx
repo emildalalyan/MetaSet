@@ -352,6 +352,9 @@
   <data name="label9.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="textBox10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 23</value>
+  </data>
   <data name="textBox10.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -389,8 +392,11 @@
     <value>Для изменения, удаления, или копирования изображения, откройте контекстное меню.
 </value>
   </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 284</value>
+  </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 23</value>
+    <value>192, 22</value>
   </data>
   <data name="checkBox1.Text" xml:space="preserve">
     <value>Является частью компиляции</value>
@@ -411,7 +417,7 @@
     <value>106, 215</value>
   </data>
   <data name="textBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 23</value>
+    <value>167, 23</value>
   </data>
   <data name="textBox11.ToolTip" xml:space="preserve">
     <value>Чтобы ввести более одного исполнителя, введите их через запятую.
@@ -421,6 +427,39 @@
     <value />
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox13.ToolTip" xml:space="preserve">
+    <value>ISRC (International Standard Recording Code) - это код для идентификации музыки</value>
+  </data>
+  <data name="textBox14.ToolTip" xml:space="preserve">
+    <value>Amazon ID - это ИДентификационный код.</value>
+  </data>
+  <data name="textBox15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 246</value>
+  </data>
+  <data name="textBox15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 23</value>
+  </data>
+  <data name="textBox15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 247</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 21</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Автор Ремикса:</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
