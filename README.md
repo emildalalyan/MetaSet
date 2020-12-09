@@ -1,6 +1,6 @@
 <img width="90" height="90" align="left" alt="MetaSet Logo"  src="metaset.png">
 
-## MetaSet Program
+## MetaSet Program (Nightly Builds)
 **MetaSet** — is a simple tool, that gets possible to *change metadata*.
 
 ### Supported Formats
