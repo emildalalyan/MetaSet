@@ -136,6 +136,12 @@
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Сохранить как...</value>
   </data>
+  <data name="saveMetadataAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 22</value>
+  </data>
+  <data name="saveMetadataAsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить метаданные как...</value>
+  </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>234, 22</value>
   </data>
@@ -186,6 +192,12 @@
   </data>
   <data name="checkAPropertiesToolStripMenuItem.Text" xml:space="preserve">
     <value>Просмотреть свойства...</value>
+  </data>
+  <data name="loadMetadataFromAFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="loadMetadataFromAFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить метаданные из Файла...</value>
   </data>
   <data name="advancedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 20</value>
@@ -289,6 +301,9 @@
   <data name="textBox5.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 106</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Номер</value>
   </data>
@@ -298,9 +313,6 @@
   <data name="textBox6.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 109</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Жанр</value>
   </data>
@@ -308,7 +320,7 @@
     <value />
   </data>
   <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 150</value>
+    <value>103, 143</value>
   </data>
   <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>498, 23</value>
@@ -326,13 +338,16 @@
     <value />
   </data>
   <data name="textBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 179</value>
+    <value>369, 172</value>
   </data>
   <data name="textBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 23</value>
   </data>
   <data name="textBox8.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 172</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>

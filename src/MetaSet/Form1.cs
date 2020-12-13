@@ -28,8 +28,8 @@ namespace MetaSet
                 {
                     try
                     {
-                        int a = Convert.ToInt32(args[1]);
-                        int b = Convert.ToInt32(args[2]);
+                        short a = Convert.ToInt16(args[1]);
+                        short b = Convert.ToInt16(args[2]);
                         this.StartPosition = FormStartPosition.Manual;
                         this.Location = new Point(a, b);
                     }
@@ -123,11 +123,12 @@ namespace MetaSet
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             if (!Functions.IsOpened()) return;
-            
-            try { 
+
+            try
+            {
                 MetaSet.File.Tag.Track = Convert.ToUInt16(this.textBox5.Text);
             }
-            catch(Exception)
+            catch
             {
                 this.textBox5.Text = "";
             }
@@ -271,6 +272,18 @@ namespace MetaSet
         {
             if (!Functions.IsOpened()) return;
             MetaSet.File.Tag.RemixedBy = textBox15.Text;
+        }
+
+        private void saveMetadataAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.SaveTagAs();
+        }
+
+        private void loadMetadataFromAFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.LoadMetaFromFile();
         }
     }
 }

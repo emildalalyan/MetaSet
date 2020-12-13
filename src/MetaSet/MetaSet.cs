@@ -20,7 +20,6 @@ namespace MetaSet
         static public void AboutProgram()
         {
             new About().ShowDialog();
-            //MessageBox.Show($"MetaSet v{Version}\n----------------------\nBy Emil Dalalyan\nLicense is GNU LGPL v3.\nProgram based on TagLibSharp library.", "About MetaSet...");
         }
         static public void CreateInstance()
         {
@@ -53,7 +52,7 @@ namespace MetaSet
             else return dec.ToString() + plus;
         }
     }
-    static partial class Functions
+    static class Functions
     {
         static public void SaveAsFunction()
         {
@@ -130,6 +129,33 @@ namespace MetaSet
             };
             return 0;
         }
+        static public void SaveTagAs()
+        {
+            if (!IsOpened()) return;
+            try
+            {
+                using (SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "Metadata File (*.met)|*.met",
+                    InitialDirectory = (IsOpened()) ? Path.GetDirectoryName(MetaSet.File.Name) : ""
+                })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.Length > 0)
+                    {
+                        if (!File.Exists(sfd.FileName)) File.Create(sfd.FileName).Close();
+                        using (TagLib.File tlb = TagLib.File.Create(sfd.FileName, "audio/mpeg", TagLib.ReadStyle.None))
+                        {
+                            MetaSet.File.Tag.CopyTo(tlb.Tag, true);
+                            tlb.Save();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error was appeared! Error message was: " + e.Message);
+            }
+        }
         static public void ExtractCover()
         {
             if (MetaSet.MainForm.pictureBox1.Image == null) return;
@@ -170,7 +196,7 @@ namespace MetaSet
             {
                 MetaSet.File.Dispose();
             }
-            //MetaSet.File.Tag.
+
             MetaSet.File =              null;
             MetaSet.MainForm.Text =     "MetaSet";
             MetaSet.MainForm.saveToolStripMenuItem.Enabled =                        false;
@@ -198,12 +224,40 @@ namespace MetaSet
             MetaSet.MainForm.textBox14.Text =       "";
             MetaSet.MainForm.textBox15.Text =       "";
             MetaSet.MainForm.saveAsToolStripMenuItem.Enabled = false;
-            
+            MetaSet.MainForm.saveMetadataAsToolStripMenuItem.Enabled = false;
+            MetaSet.MainForm.loadMetadataFromAFileToolStripMenuItem.Enabled = false;
+
             return 0;
+        }
+        static public void LoadMetaFromFile()
+        {
+            if (!IsOpened()) return;
+            try
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog
+                {
+                    Filter = "Metadata File (*.met)|*.met",
+                    InitialDirectory = (IsOpened()) ? Path.GetDirectoryName(MetaSet.File.Name) : ""
+                })
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.Length > 0)
+                    {
+                        using (TagLib.File tlf = TagLib.File.Create(ofd.FileName, "audio/mpeg", TagLib.ReadStyle.None)) 
+                        {
+                            tlf.Tag.CopyTo(MetaSet.File.Tag, true);
+                        }
+                        ReadIt();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error was appeared. Error message was: " + e.Message + ". HRESULT: 0x" + e.HResult.ToString("X"), "Error in MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         static public bool IsOpened()
         {
-            return MetaSet.File is TagLib.File;
+            return (MetaSet.File is TagLib.File);
         }
         static public void CopyTheCover()
         {
@@ -214,7 +268,8 @@ namespace MetaSet
         {
             using (OpenFileDialog a = new OpenFileDialog
             {
-                Filter = "All Supported Formats (*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a)|*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a"
+                Filter = "All Supported Formats (*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a)|*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a",
+                InitialDirectory = (MetaSet.File is TagLib.File) ? Path.GetDirectoryName(MetaSet.File.Name) : ""
             })
             {
                 a.ShowDialog();
@@ -311,6 +366,8 @@ namespace MetaSet
             MetaSet.MainForm.saveAsToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.textBox14.Text = MetaSet.File.Tag.AmazonId;
             MetaSet.MainForm.textBox15.Text = MetaSet.File.Tag.RemixedBy;
+            MetaSet.MainForm.saveMetadataAsToolStripMenuItem.Enabled = true;
+            MetaSet.MainForm.loadMetadataFromAFileToolStripMenuItem.Enabled = true;
 
             if (MetaSet.File.Tag.Pictures.Length > 0)
             {
