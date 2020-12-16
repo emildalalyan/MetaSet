@@ -285,5 +285,54 @@ namespace MetaSet
             if (!Functions.IsOpened()) return;
             Functions.LoadMetaFromFile();
         }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+
+            try
+            {
+                MetaSet.File.Tag.DiscCount = Convert.ToUInt16(this.textBox16.Text);
+            }
+            catch (Exception)
+            {
+                this.textBox16.Text = "";
+            }
+        }
+
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+
+            try
+            {
+                MetaSet.File.Tag.TrackCount = Convert.ToUInt16(this.textBox17.Text);
+            }
+            catch
+            {
+                this.textBox17.Text = "";
+            }
+        }
+
+        private void textBox18_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+
+            MetaSet.File.Tag.Conductor = textBox18.Text;
+        }
+
+        private void textBox19_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+
+            MetaSet.File.Tag.InitialKey = textBox19.Text;
+        }
+
+        private void textBox20_TextChanged(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+
+            MetaSet.File.Tag.Publisher = textBox20.Text;
+        }
     }
 }

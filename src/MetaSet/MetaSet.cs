@@ -9,7 +9,7 @@ namespace MetaSet
 {
     static class MetaSet
     {
-        static public readonly string Version = typeof(MetaSet).Assembly.GetName().Version.Major.ToString() + "." + typeof(MetaSet).Assembly.GetName().Version.Minor.ToString() + "-stable";
+        public const string Version = "1.2.1-stable";
         static public TagLib.File File;
         static public Form1 MainForm;
         static public readonly string[] FormatSupport = new string[]
@@ -226,6 +226,11 @@ namespace MetaSet
             MetaSet.MainForm.saveAsToolStripMenuItem.Enabled = false;
             MetaSet.MainForm.saveMetadataAsToolStripMenuItem.Enabled = false;
             MetaSet.MainForm.loadMetadataFromAFileToolStripMenuItem.Enabled = false;
+            MetaSet.MainForm.textBox16.Text =       "";
+            MetaSet.MainForm.textBox17.Text =       "";
+            MetaSet.MainForm.textBox18.Text =       "";
+            MetaSet.MainForm.textBox19.Text =       "";
+            MetaSet.MainForm.textBox20.Text =       "";
 
             return 0;
         }
@@ -269,7 +274,7 @@ namespace MetaSet
             using (OpenFileDialog a = new OpenFileDialog
             {
                 Filter = "All Supported Formats (*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a)|*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a",
-                InitialDirectory = (MetaSet.File is TagLib.File) ? Path.GetDirectoryName(MetaSet.File.Name) : ""
+                InitialDirectory = (IsOpened()) ? Path.GetDirectoryName(MetaSet.File.Name) : ""
             })
             {
                 a.ShowDialog();
@@ -368,6 +373,11 @@ namespace MetaSet
             MetaSet.MainForm.textBox15.Text = MetaSet.File.Tag.RemixedBy;
             MetaSet.MainForm.saveMetadataAsToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.loadMetadataFromAFileToolStripMenuItem.Enabled = true;
+            MetaSet.MainForm.textBox16.Text = MetaSet.File.Tag.DiscCount.ToString();
+            MetaSet.MainForm.textBox17.Text = MetaSet.File.Tag.TrackCount.ToString();
+            MetaSet.MainForm.textBox18.Text = MetaSet.File.Tag.Conductor;
+            MetaSet.MainForm.textBox19.Text = MetaSet.File.Tag.InitialKey;
+            MetaSet.MainForm.textBox20.Text = MetaSet.File.Tag.Publisher;               
 
             if (MetaSet.File.Tag.Pictures.Length > 0)
             {
