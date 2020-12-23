@@ -46,6 +46,7 @@
             this.extractACoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkAPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadMetadataFromAFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteAnyTagsInFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.repositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,6 +99,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.imagetype = new System.Windows.Forms.Label();
+            this.imagesize = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -177,7 +180,8 @@
             this.playATrackToolStripMenuItem,
             this.extractACoverToolStripMenuItem,
             this.checkAPropertiesToolStripMenuItem,
-            this.loadMetadataFromAFileToolStripMenuItem});
+            this.loadMetadataFromAFileToolStripMenuItem,
+            this.deleteAnyTagsInFileToolStripMenuItem});
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
             resources.ApplyResources(this.advancedToolStripMenuItem, "advancedToolStripMenuItem");
             // 
@@ -216,6 +220,12 @@
             resources.ApplyResources(this.loadMetadataFromAFileToolStripMenuItem, "loadMetadataFromAFileToolStripMenuItem");
             this.loadMetadataFromAFileToolStripMenuItem.Name = "loadMetadataFromAFileToolStripMenuItem";
             this.loadMetadataFromAFileToolStripMenuItem.Click += new System.EventHandler(this.loadMetadataFromAFileToolStripMenuItem_Click);
+            // 
+            // deleteAnyTagsInFileToolStripMenuItem
+            // 
+            resources.ApplyResources(this.deleteAnyTagsInFileToolStripMenuItem, "deleteAnyTagsInFileToolStripMenuItem");
+            this.deleteAnyTagsInFileToolStripMenuItem.Name = "deleteAnyTagsInFileToolStripMenuItem";
+            this.deleteAnyTagsInFileToolStripMenuItem.Click += new System.EventHandler(this.deleteAnyTagsInFileToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -392,6 +402,8 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
             // contextMenuStrip
             // 
@@ -401,22 +413,24 @@
             this.copyimg});
             this.contextMenuStrip.Name = "contextMenuStrip";
             resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
-            this.contextMenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip_ItemClicked);
             // 
             // changepict
             // 
             this.changepict.Name = "changepict";
             resources.ApplyResources(this.changepict, "changepict");
+            this.changepict.Click += new System.EventHandler(this.changepict_Click);
             // 
             // dthecov
             // 
             this.dthecov.Name = "dthecov";
             resources.ApplyResources(this.dthecov, "dthecov");
+            this.dthecov.Click += new System.EventHandler(this.dthecov_Click);
             // 
             // copyimg
             // 
             this.copyimg.Name = "copyimg";
             resources.ApplyResources(this.copyimg, "copyimg");
+            this.copyimg.Click += new System.EventHandler(this.copyimg_Click);
             // 
             // checkBox1
             // 
@@ -557,11 +571,25 @@
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
             // 
+            // imagetype
+            // 
+            resources.ApplyResources(this.imagetype, "imagetype");
+            this.imagetype.BackColor = System.Drawing.Color.Transparent;
+            this.imagetype.Name = "imagetype";
+            // 
+            // imagesize
+            // 
+            resources.ApplyResources(this.imagesize, "imagesize");
+            this.imagesize.BackColor = System.Drawing.Color.Transparent;
+            this.imagesize.Name = "imagesize";
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.imagesize);
+            this.Controls.Add(this.imagetype);
             this.Controls.Add(this.textBox20);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.textBox19);
@@ -691,6 +719,9 @@
         private System.Windows.Forms.Label label19;
         public System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Label label20;
+        public System.Windows.Forms.Label imagetype;
+        public System.Windows.Forms.ToolStripMenuItem deleteAnyTagsInFileToolStripMenuItem;
+        public System.Windows.Forms.Label imagesize;
     }
 }
 

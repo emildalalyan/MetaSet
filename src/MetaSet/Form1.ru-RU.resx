@@ -118,24 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
-  <data name="advancedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 20</value>
-  </data>
-  <data name="advancedToolStripMenuItem.Text" xml:space="preserve">
-    <value>Дополнительно</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>234, 22</value>
   </data>
@@ -175,6 +157,12 @@
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Выйти</value>
   </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
   <data name="createNewInstanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 22</value>
   </data>
@@ -211,6 +199,18 @@
   <data name="loadMetadataFromAFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Загрузить метаданные из Файла...</value>
   </data>
+  <data name="deleteAnyTagsInFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="deleteAnyTagsInFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Удалить теги из Файла...</value>
+  </data>
+  <data name="advancedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 20</value>
+  </data>
+  <data name="advancedToolStripMenuItem.Text" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
   <data name="repositoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 22</value>
   </data>
@@ -232,11 +232,23 @@
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>О программе</value>
   </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 20</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Заголовок</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 40</value>
@@ -244,11 +256,17 @@
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 23</value>
   </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 69</value>
   </data>
   <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 23</value>
+  </data>
+  <data name="textBox2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>
@@ -256,11 +274,17 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Артист</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>345, 69</value>
   </data>
   <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 23</value>
+  </data>
+  <data name="textBox3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
@@ -268,8 +292,17 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Альбом</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Год</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>139, 106</value>
@@ -277,8 +310,17 @@
   <data name="label5.Text" xml:space="preserve">
     <value>№ Трека</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox6.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Жанр</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 143</value>
@@ -286,17 +328,26 @@
   <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>498, 23</value>
   </data>
+  <data name="textBox7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Текст песни</value>
   </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox8.Location" type="System.Drawing.Point, System.Drawing">
     <value>369, 172</value>
   </data>
   <data name="textBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 23</value>
+  </data>
+  <data name="textBox8.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 172</value>
@@ -307,18 +358,26 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Композитор</value>
   </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Копирайт</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox10.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Номер диска</value>
   </data>
-  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 70</value>
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value>Для изменения, удаления, или копирования изображения, откройте контекстное меню.
-</value>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="changepict.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
@@ -338,6 +397,16 @@
   <data name="copyimg.Text" xml:space="preserve">
     <value>Скопировать обложку...</value>
   </data>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 70</value>
+  </data>
+  <data name="contextMenuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value>Для изменения, удаления, или копирования изображения, откройте контекстное меню.
+</value>
+  </data>
   <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 284</value>
   </data>
@@ -347,11 +416,17 @@
   <data name="checkBox1.Text" xml:space="preserve">
     <value>Является частью компиляции</value>
   </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 23</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Исполнители</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox11.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 215</value>
@@ -362,6 +437,12 @@
   <data name="textBox11.ToolTip" xml:space="preserve">
     <value>Чтобы ввести более одного исполнителя, введите их через запятую.
 </value>
+  </data>
+  <data name="textBox12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox13.ToolTip" xml:space="preserve">
     <value>ISRC (International Standard Recording Code) - это код для идентификации музыки</value>
@@ -378,6 +459,15 @@
   <data name="textBox15.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 23</value>
   </data>
+  <data name="textBox15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 247</value>
   </data>
@@ -387,17 +477,35 @@
   <data name="label15.Text" xml:space="preserve">
     <value>Автор Ремикса:</value>
   </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 246</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>205, 106</value>
   </data>
+  <data name="textBox5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox17.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 106</value>
   </data>
+  <data name="textBox17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 106</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBox18.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 324</value>
@@ -405,8 +513,17 @@
   <data name="textBox18.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 23</value>
   </data>
+  <data name="textBox18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Дирижёр</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBox19.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>454, 324</value>
@@ -417,11 +534,17 @@
   <data name="label19.Text" xml:space="preserve">
     <value>Ключевая нота</value>
   </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="textBox20.Location" type="System.Drawing.Point, System.Drawing">
     <value>305, 324</value>
   </data>
   <data name="textBox20.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 23</value>
+  </data>
+  <data name="textBox20.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 324</value>
@@ -431,6 +554,12 @@
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Издатель</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="imagetype.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2169,5 +2298,8 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4AcAAOAH
         AADgAwAA4AEAAOABAADgAQAA4AEAAOABAADgAQAA4AEAAOADAADgBwAA4AcAAOAHAAD//wAA
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

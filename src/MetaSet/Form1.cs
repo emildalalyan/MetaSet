@@ -38,7 +38,7 @@ namespace MetaSet
                         MessageBox.Show("Invalid arguments!", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }    
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,29 +177,6 @@ namespace MetaSet
             Functions.ExtractCover();
         }
 
-        private void contextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            if (!Functions.IsOpened()) return;
-            switch (e.ClickedItem.Name)
-            {
-                case "changepict":
-                    {
-                        Functions.ChangeACover();
-                        break;
-                    }
-                case "dthecov":
-                    {
-                        Functions.DeleteACover();
-                        break;
-                    }
-                case "copyimg":
-                    {
-                        Functions.CopyTheCover();
-                        break;
-                    }
-            }
-        }
-
         private void Form1_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
@@ -333,6 +310,47 @@ namespace MetaSet
             if (!Functions.IsOpened()) return;
 
             MetaSet.File.Tag.Publisher = textBox20.Text;
+        }
+
+        private void deleteAnyTagsInFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            /*File.Create("~.tmp").Close();
+            TagLib.Tag tlt = TagLib.File.Create("~.tmp", "audio/mpeg", TagLib.ReadStyle.None).Tag;
+            tlt.CopyTo(MetaSet.File.Tag, true);
+            File.Delete("~.tmp");*/
+
+            Functions.DeleteTags();
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            imagetype.Visible = true;
+            imagesize.Visible = true;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            imagetype.Visible = false;
+            imagesize.Visible = false;
+        }
+
+        private void changepict_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.ChangeACover();
+        }
+
+        private void dthecov_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.DeleteACover();
+        }
+
+        private void copyimg_Click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.CopyTheCover();
         }
     }
 }

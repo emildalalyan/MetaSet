@@ -9,7 +9,7 @@ namespace MetaSet
 {
     static class MetaSet
     {
-        public const string Version = "1.2.1-stable";
+        public const string Version = "1.3-stable";
         static public TagLib.File File;
         static public Form1 MainForm;
         static public readonly string[] FormatSupport = new string[]
@@ -85,6 +85,7 @@ namespace MetaSet
         {
             MetaSet.File.Tag.Pictures = null;
             MetaSet.MainForm.pictureBox1.Image = null;
+            MetaSet.MainForm.imagetype.Text = "";
         }
         static public bool WeCanGetTag()
         {
@@ -110,6 +111,9 @@ namespace MetaSet
                             Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
                         }
                     };
+
+                    MetaSet.MainForm.imagetype.Text = MetaSet.File.Tag.Pictures[0].MimeType;
+                    MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");
                 }
             }
             return 0;
@@ -127,6 +131,9 @@ namespace MetaSet
                     Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
                 }
             };
+
+            MetaSet.MainForm.imagetype.Text = MetaSet.File.Tag.Pictures[0].MimeType;
+            MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");
             return 0;
         }
         static public void SaveTagAs()
@@ -231,8 +238,19 @@ namespace MetaSet
             MetaSet.MainForm.textBox18.Text =       "";
             MetaSet.MainForm.textBox19.Text =       "";
             MetaSet.MainForm.textBox20.Text =       "";
+            MetaSet.MainForm.imagetype.Text =       "";
+            MetaSet.MainForm.imagesize.Text =       "";
+            MetaSet.MainForm.deleteAnyTagsInFileToolStripMenuItem.Enabled = false;
 
             return 0;
+        }
+        static public void DeleteTags()
+        {
+            Functions.DeleteACover();
+            MetaSet.File.RemoveTags(TagLib.TagTypes.AllTags);   
+
+            Functions.ReadIt();
+            //MessageBox.Show("For switching " + '"' + "It is part of compilation" + '"' + " checkbox, please save file and reopen it.", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         static public void LoadMetaFromFile()
         {
@@ -353,18 +371,22 @@ namespace MetaSet
             MetaSet.MainForm.playATrackToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.checkAPropertiesToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.textBox1.Text = MetaSet.File.Tag.Title;
-            if(MetaSet.File.Tag.AlbumArtists.Length > 0) MetaSet.MainForm.textBox2.Text = MetaSet.File.Tag.AlbumArtists[0];
+            if (MetaSet.File.Tag.AlbumArtists.Length > 0) MetaSet.MainForm.textBox2.Text = MetaSet.File.Tag.AlbumArtists[0];
+            else MetaSet.MainForm.textBox2.Text = "";
             MetaSet.MainForm.textBox3.Text = MetaSet.File.Tag.Album;
             MetaSet.MainForm.textBox4.Text = MetaSet.File.Tag.Year.ToString();
             MetaSet.MainForm.textBox5.Text = MetaSet.File.Tag.Track.ToString();
             if (MetaSet.File.Tag.Genres.Length > 0) MetaSet.MainForm.textBox6.Text = MetaSet.File.Tag.Genres[0];
+            else MetaSet.MainForm.textBox6.Text = "";
             MetaSet.MainForm.textBox7.Text = MetaSet.File.Tag.Lyrics;
             MetaSet.MainForm.textBox9.Text = MetaSet.File.Tag.Copyright;
             if (MetaSet.File.Tag.Composers.Length > 0) MetaSet.MainForm.textBox8.Text = MetaSet.File.Tag.Composers[0];
+            else MetaSet.MainForm.textBox8.Text = "";
             MetaSet.MainForm.textBox10.Text = MetaSet.File.Tag.Disc.ToString();
             if (WeCanGetTag()) MetaSet.MainForm.checkBox1.Checked = (((TagLib.Id3v2.Tag)MetaSet.File.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1");
             else MetaSet.MainForm.checkBox1.Enabled = false;
-            if(MetaSet.File.Tag.Performers is string[]) MetaSet.MainForm.textBox11.Text = String.Join(",", MetaSet.File.Tag.Performers);
+            if (MetaSet.File.Tag.Performers is string[]) MetaSet.MainForm.textBox11.Text = String.Join(",", MetaSet.File.Tag.Performers);
+            else MetaSet.MainForm.textBox11.Text = "";
             MetaSet.MainForm.textBox12.Text = MetaSet.File.Tag.BeatsPerMinute.ToString();
             MetaSet.MainForm.saveToolStripMenuItem.Enabled = true;
             MetaSet.MainForm.textBox13.Text = MetaSet.File.Tag.ISRC;
@@ -377,7 +399,8 @@ namespace MetaSet
             MetaSet.MainForm.textBox17.Text = MetaSet.File.Tag.TrackCount.ToString();
             MetaSet.MainForm.textBox18.Text = MetaSet.File.Tag.Conductor;
             MetaSet.MainForm.textBox19.Text = MetaSet.File.Tag.InitialKey;
-            MetaSet.MainForm.textBox20.Text = MetaSet.File.Tag.Publisher;               
+            MetaSet.MainForm.textBox20.Text = MetaSet.File.Tag.Publisher;
+            MetaSet.MainForm.deleteAnyTagsInFileToolStripMenuItem.Enabled = true;
 
             if (MetaSet.File.Tag.Pictures.Length > 0)
             {
@@ -387,8 +410,11 @@ namespace MetaSet
                 {
                     MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromStream(ms);
                 }
+                MetaSet.MainForm.imagetype.Text = ((MetaSet.File.Tag.Pictures[0].MimeType.Length > 0) ? MetaSet.File.Tag.Pictures[0].MimeType : "");
+                MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");
                 //Thanks for Ben Allred from stackoverflow.com
             }
+            else MetaSet.MainForm.imagetype.Text = "";
             
             return 0;
         }
