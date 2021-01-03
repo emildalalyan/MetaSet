@@ -9,9 +9,9 @@ namespace MetaSet
 {
     static class MetaSet
     {
-        public const string Version = "1.3-stable";
+        public const string Version = "1.3.1-stable";
         static public TagLib.File File;
-        static public Form1 MainForm;
+        static public Form1 MainForm; 
         static public readonly string[] FormatSupport = new string[]
         {
             ".mp3", ".flac", ".ogg", ".wav", ".wma", ".m4a"
@@ -73,19 +73,26 @@ namespace MetaSet
                 }
             }
         }
-        static public void CopyInfoAboutTrack()
+        static public void TakeScreenshot()
         {
-            Clipboard.SetText("Title: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Title)
+            /*Clipboard.SetText("Title: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Title)
                 + "\nArtist: " + Additional.IfNullReturnNA(MetaSet.File.Tag.AlbumArtists, 0)
                 + "\nAlbum: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Album)
                 + "\nCopyright: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Copyright)
-                + "\nComposer: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Composers, 0));
+                + "\nComposer: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Composers, 0));*/
+            using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(MetaSet.MainForm.Width, MetaSet.MainForm.Height))
+            {
+                MetaSet.MainForm.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0,0, MetaSet.MainForm.Width, MetaSet.MainForm.Height));
+                Clipboard.SetImage(bitmap);
+            }
+                
         }
         static public void DeleteACover()
         {
             MetaSet.File.Tag.Pictures = null;
             MetaSet.MainForm.pictureBox1.Image = null;
             MetaSet.MainForm.imagetype.Text = "";
+            MetaSet.MainForm.imagesize.Text = "";
         }
         static public bool WeCanGetTag()
         {
@@ -102,7 +109,6 @@ namespace MetaSet
                 if (a.ShowDialog() == DialogResult.OK)
                 {
                     MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromFile(a.FileName);
-
                     MetaSet.File.Tag.Pictures = new TagLib.Picture[1] {
                         new TagLib.Picture
                         {
@@ -409,6 +415,11 @@ namespace MetaSet
                 using (MemoryStream ms = new MemoryStream(MetaSet.File.Tag.Pictures[0].Data.Data))
                 {
                     MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromStream(ms);
+                }
+                if (MetaSet.File.Tag.Pictures[0].MimeType.Length < 1)
+                {
+                    ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+                    MetaSet.File.Tag.Pictures[0].MimeType = codecs.First(codec => codec.FormatID == MetaSet.MainForm.pictureBox1.Image.RawFormat.Guid).MimeType;
                 }
                 MetaSet.MainForm.imagetype.Text = ((MetaSet.File.Tag.Pictures[0].MimeType.Length > 0) ? MetaSet.File.Tag.Pictures[0].MimeType : "");
                 MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");

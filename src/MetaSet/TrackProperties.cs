@@ -16,11 +16,7 @@ namespace MetaSet
             this.label6.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.AudioSampleRate, " Hz");
 
             string codecs = "";
-            foreach(var one in MetaSet.File.Properties.Codecs.ToArray())
-            {
-                if (codecs.Length < 1) codecs = one.Description;
-                else codecs += ", " + one.Description;
-            }
+            foreach (TagLib.ICodec one in MetaSet.File.Properties.Codecs) codecs += ((codecs.Length > 0) ? ", " : "") + one.Description;
 
             this.label8.Text = Additional.IfNullReturnNA(codecs);
             this.label10.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.Duration.ToString("mm\\:ss"));

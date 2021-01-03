@@ -441,7 +441,7 @@
     <value>Программа MetaSet</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 83</value>
+    <value>127, 77</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -450,7 +450,7 @@
     <value>Лицензия:</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 59</value>
+    <value>127, 53</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 19</value>
@@ -459,7 +459,7 @@
     <value>Использован(ы):</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 36</value>
+    <value>127, 29</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Эмиль Далалян</value>
@@ -471,7 +471,7 @@
     <value>Автор:</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 12</value>
+    <value>127, 5</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 20</value>

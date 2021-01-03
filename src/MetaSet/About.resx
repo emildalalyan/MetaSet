@@ -497,7 +497,7 @@
     <value>NoControl</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 84</value>
+    <value>74, 77</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -527,7 +527,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 84</value>
+    <value>14, 77</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 19</value>
@@ -557,7 +557,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 60</value>
+    <value>74, 53</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -587,7 +587,7 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 60</value>
+    <value>14, 53</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 19</value>
@@ -617,7 +617,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 36</value>
+    <value>74, 29</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 20</value>
@@ -647,7 +647,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 36</value>
+    <value>14, 29</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
@@ -677,7 +677,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 12</value>
+    <value>74, 5</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 20</value>
@@ -704,7 +704,7 @@
     <value>6</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 12</value>
+    <value>14, 5</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
@@ -737,7 +737,7 @@
     <value>24, 72</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 120</value>
+    <value>338, 107</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -758,7 +758,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>384, 217</value>
+    <value>384, 198</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

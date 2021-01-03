@@ -10,7 +10,9 @@ namespace MetaSet
         public Form1(string[] args)
         {
             InitializeComponent();
-            MetaSet.MainForm = this;
+            MetaSet.MainForm = this;/*
+            this.aboutToolStripMenuItem.Image = Icon.ExtractAssociatedIcon(typeof(MetaSet).Assembly.Location).ToBitmap();
+            */
             if (args.Length > 0)
             {
                 if (args[0] != "-s")
@@ -187,12 +189,6 @@ namespace MetaSet
             System.Diagnostics.Process.Start("https://github.com/emil0911/MetaSet");
         }
 
-        private void copyInformationAboutTrackToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Functions.IsOpened()) return;
-            Functions.CopyInfoAboutTrack();
-        }
-
         private void checkAPropertiesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Functions.IsOpened()) return;
@@ -351,6 +347,12 @@ namespace MetaSet
         {
             if (!Functions.IsOpened()) return;
             Functions.CopyTheCover();
+        }
+
+        private void takescrmenuitem_click(object sender, EventArgs e)
+        {
+            if (!Functions.IsOpened()) return;
+            Functions.TakeScreenshot();
         }
     }
 }
