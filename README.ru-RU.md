@@ -13,4 +13,4 @@
   Да, она использует **[TagLibSharp](http://github.com/mono/taglib-sharp)**
   
 ### А где релизы?
-[**Там**](https://github.com/emil0911/MetaSet/releases) распологаются релизы.
+[**Там**](https://github.com/emildalalyan/MetaSet/releases) распологаются релизы.
