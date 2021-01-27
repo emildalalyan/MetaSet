@@ -1,4 +1,4 @@
-<img width="90" height="90" align="left" alt="MetaSet Logo"  src="metaset.png">
+<img width="90" height="90" align="left" alt="MetaSet Logo"  src="The New MetaSet Logo.png">
 
 ## MetaSet Program
 **MetaSet** — is a simple tool, that gets possible to *change metadata*.
