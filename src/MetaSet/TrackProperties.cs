@@ -11,17 +11,17 @@ namespace MetaSet
         {
             InitializeComponent();
             this.label1.Text = MetaSet.File.Tag.Title ?? Path.GetFileName(MetaSet.File.Name);
-            this.label3.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.AudioBitrate, " KB/s");
-            this.label4.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.AudioChannels);
-            this.label6.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.AudioSampleRate, " Hz");
+            this.label3.Text = MetaSet.File.Properties.AudioBitrate.IfNullReturnNA(" KB/s");
+            this.label4.Text = MetaSet.File.Properties.AudioChannels.IfNullReturnNA();
+            this.label6.Text = MetaSet.File.Properties.AudioSampleRate.IfNullReturnNA(" Hz");
 
             string codecs = "";
             foreach (TagLib.ICodec one in MetaSet.File.Properties.Codecs) codecs += ((codecs.Length > 0) ? ", " : "") + one.Description;
 
-            this.label8.Text = Additional.IfNullReturnNA(codecs);
-            this.label10.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.Duration.ToString("mm\\:ss"));
+            this.label8.Text = codecs.IfNullReturnNA();
+            this.label10.Text = MetaSet.File.Properties.Duration.ToString("mm\\:ss").IfNullReturnNA();
             this.pictureBox1.Image = MetaSet.MainForm.pictureBox1.Image;
-            this.label12.Text = Additional.IfNullReturnNA(MetaSet.File.Properties.BitsPerSample, " Bit(s)");
+            this.label12.Text = MetaSet.File.Properties.BitsPerSample.IfNullReturnNA(" Bit(s)");
         }
     }
 }

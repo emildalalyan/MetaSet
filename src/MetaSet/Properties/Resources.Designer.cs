@@ -59,5 +59,14 @@ namespace MetaSet.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select directory you want to open....
+        /// </summary>
+        internal static string FolderDialogCaption {
+            get {
+                return ResourceManager.GetString("FolderDialogCaption", resourceCulture);
+            }
+        }
     }
 }

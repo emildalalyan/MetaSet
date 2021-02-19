@@ -10,9 +10,7 @@ namespace MetaSet
         public Form1(string[] args)
         {
             InitializeComponent();
-            MetaSet.MainForm = this;/*
-            this.aboutToolStripMenuItem.Image = Icon.ExtractAssociatedIcon(typeof(MetaSet).Assembly.Location).ToBitmap();
-            */
+            MetaSet.MainForm = this;
             if (args.Length > 0)
             {
                 if (args[0] != "-s")
@@ -21,7 +19,7 @@ namespace MetaSet
                     { 
                         Functions.OpenFile(args[0]);
                     }
-                    catch (Exception)
+                    catch
                     {
                         MessageBox.Show("Invalid argument!", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -35,7 +33,7 @@ namespace MetaSet
                         this.StartPosition = FormStartPosition.Manual;
                         this.Location = new Point(a, b);
                     }
-                    catch(Exception)
+                    catch
                     {
                         MessageBox.Show("Invalid arguments!", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -164,7 +162,8 @@ namespace MetaSet
         {
             if (!Functions.IsOpened()) return;
 
-            try {
+            try
+            {
                 MetaSet.File.Tag.Disc = Convert.ToUInt16(this.textBox10.Text);
             }
             catch(Exception)
@@ -311,10 +310,6 @@ namespace MetaSet
         private void deleteAnyTagsInFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Functions.IsOpened()) return;
-            /*File.Create("~.tmp").Close();
-            TagLib.Tag tlt = TagLib.File.Create("~.tmp", "audio/mpeg", TagLib.ReadStyle.None).Tag;
-            tlt.CopyTo(MetaSet.File.Tag, true);
-            File.Delete("~.tmp");*/
 
             Functions.DeleteTags();
         }
@@ -353,6 +348,17 @@ namespace MetaSet
         {
             if (!Functions.IsOpened()) return;
             Functions.TakeScreenshot();
+        }
+
+        private void OpenCatalogMenuItem_Click(object sender, EventArgs e)
+        {
+            MultiFileManager multi = new MultiFileManager()
+            {
+                Location = new Point(this.Location.X + this.Width + 8, this.Location.Y),
+                Height = this.Height
+            };
+
+            multi.Show();
         }
     }
 }

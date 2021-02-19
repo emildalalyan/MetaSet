@@ -4,31 +4,66 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Media;
+using System.Threading.Tasks;
 
 namespace MetaSet
 {
+    /// <summary>
+    /// <see cref="MetaSet"/> common class
+    /// </summary>
     static class MetaSet
     {
-        public const string Version = "1.3.1-stable";
+        /// <summary>
+        /// MetaSet Version
+        /// </summary>
+        public const string Version = "1.4-stable";
+
+        /// <summary>
+        /// Loaded File
+        /// </summary>
         static public TagLib.File File;
-        static public Form1 MainForm; 
+
+        /// <summary>
+        /// Main Form Instance
+        /// </summary>
+        static public Form1 MainForm;
+
+        /// <summary>
+        /// Formats, supported by MetaSet
+        /// </summary>
         static public readonly string[] FormatSupport = new string[]
         {
             ".mp3", ".flac", ".ogg", ".wav", ".wma", ".m4a"
         };
         
+        /// <summary>
+        /// Show About Dialog
+        /// </summary>
         static public void AboutProgram()
         {
-            new About().ShowDialog();
+            using (About about = new About()) about.ShowDialog();
         }
+
+        /// <summary>
+        /// Create New MetaSet Instance
+        /// </summary>
         static public void CreateInstance()
         {
             System.Diagnostics.Process.Start(Application.ExecutablePath, $"-s {MainForm.Location.X + 32} {MainForm.Location.Y + 32}");
         }
     }
-    static class Additional
+
+    /// <summary>
+    /// Class making possible to convert some types
+    /// </summary>
+    static class Converting
     {
-        static public byte[] ImageToArrayOfBytes(System.Drawing.Image img)
+        /// <summary>
+        /// Convert <see cref="System.Drawing.Image"/> to <see cref="byte"/>[]
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        static public byte[] ToArrayOfBytes(this System.Drawing.Image img)
         {
             using(MemoryStream m = new MemoryStream())
             {
@@ -36,22 +71,54 @@ namespace MetaSet
                 return m.ToArray();
             }
         }
-        static public string IfNullReturnNA(string str, string plus = "")
+    }
+
+    /// <summary>
+    /// Class contains some extensions
+    /// </summary>
+    static class Extensions
+    {
+        /// <summary>
+        /// If <see cref="string"/> str == null, this function returns "N/A"
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="append"></param>
+        /// <returns></returns>
+        static public string IfNullReturnNA(this string str, string append = "")
         {
             if (str == null) return "N/A";
-            return (str.Length > 0 ? str + plus : "N/A");
+            return (str.Length > 0 ? str + append : "N/A");
         }
-        static public string IfNullReturnNA(string[] str, int num, string plus = "")
+
+        /// <summary>
+        /// If <see cref="string"/> str[<see cref="int"/> index] == null, this function returns "N/A"
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="index"></param>
+        /// <param name="append"></param>
+        /// <returns></returns>
+        static public string IfNullReturnNA(this string[] str, int index, string append = "")
         {
             if (str == null) return "N/A";
-            return (str.Length > num ? str[num] + plus : "N/A");
+            return (str.Length > index ? str[index] + append : "N/A");
         }
-        static public string IfNullReturnNA(int dec, string plus = "")
+
+        /// <summary>
+        /// If <see cref="int"/> dec == null, this function returns "N/A"
+        /// </summary>
+        /// <param name="dec"></param>
+        /// <param name="append"></param>
+        /// <returns></returns>
+        static public string IfNullReturnNA(this int dec, string append = "")
         {
             if (dec < 1) return "N/A";
-            else return dec.ToString() + plus;
+            else return dec.ToString() + append;
         }
     }
+
+    /// <summary>
+    /// Common <see cref="MetaSet"/> functions
+    /// </summary>
     static class Functions
     {
         static public void SaveAsFunction()
@@ -75,17 +142,11 @@ namespace MetaSet
         }
         static public void TakeScreenshot()
         {
-            /*Clipboard.SetText("Title: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Title)
-                + "\nArtist: " + Additional.IfNullReturnNA(MetaSet.File.Tag.AlbumArtists, 0)
-                + "\nAlbum: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Album)
-                + "\nCopyright: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Copyright)
-                + "\nComposer: " + Additional.IfNullReturnNA(MetaSet.File.Tag.Composers, 0));*/
             using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(MetaSet.MainForm.Width, MetaSet.MainForm.Height))
             {
                 MetaSet.MainForm.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0,0, MetaSet.MainForm.Width, MetaSet.MainForm.Height));
                 Clipboard.SetImage(bitmap);
             }
-                
         }
         static public void DeleteACover()
         {
@@ -99,11 +160,11 @@ namespace MetaSet
             if (!IsOpened()) return false;
             return (MetaSet.File.GetTag(TagLib.TagTypes.Id3v2) is TagLib.Tag);
         }
-        static public int ChangeACover()
+        static public void ChangeACover()
         {
             using (OpenFileDialog a = new OpenFileDialog
             {
-                Filter = "Joint Photographic Experts Group (*.jpg)|*.jpg|Portable Network Graphics (*.png)|*.png"
+                Filter = "All Supported Formats (*.jpg;*.png)|*.jpg;*.png|Joint Photographic Experts Group (*.jpg)|*.jpg|Portable Network Graphics (*.png)|*.png"
             })
             {
                 if (a.ShowDialog() == DialogResult.OK)
@@ -114,7 +175,7 @@ namespace MetaSet
                         {
                             MimeType = (Path.GetExtension(a.FileName) == ".png" ? "image/png" : "image/jpeg"),
                             Type = TagLib.PictureType.Media,
-                            Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
+                            Data = MetaSet.MainForm.pictureBox1.Image.ToArrayOfBytes()
                         }
                     };
 
@@ -122,11 +183,10 @@ namespace MetaSet
                     MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");
                 }
             }
-            return 0;
         }
-        static public int ChangeACover(string filename)
+        static public void ChangeACover(string filename)
         {
-            if (Path.GetExtension(filename) != ".png" && Path.GetExtension(filename) != ".jpg") return 0;
+            if (Path.GetExtension(filename) != ".png" && Path.GetExtension(filename) != ".jpg") return;
             MetaSet.MainForm.pictureBox1.Image = System.Drawing.Image.FromFile(filename);
 
             MetaSet.File.Tag.Pictures = new TagLib.Picture[1] {
@@ -134,13 +194,12 @@ namespace MetaSet
                 {
                     MimeType = (Path.GetExtension(filename) == ".png" ? "image/png" : "image/jpeg"),
                     Type = TagLib.PictureType.Media,
-                    Data = Additional.ImageToArrayOfBytes(MetaSet.MainForm.pictureBox1.Image)
+                    Data = MetaSet.MainForm.pictureBox1.Image.ToArrayOfBytes()
                 }
             };
 
             MetaSet.MainForm.imagetype.Text = MetaSet.File.Tag.Pictures[0].MimeType;
             MetaSet.MainForm.imagesize.Text = ((MetaSet.MainForm.pictureBox1.Image is System.Drawing.Image) ? MetaSet.MainForm.pictureBox1.Image.Size.Width + "x" + MetaSet.MainForm.pictureBox1.Image.Size.Height : "");
-            return 0;
         }
         static public void SaveTagAs()
         {
@@ -338,7 +397,7 @@ namespace MetaSet
                 try
                 {
                     MetaSet.File = TagLib.File.Create(str);
-                    MetaSet.MainForm.Text = "MetaSet — " + Path.GetFileName(MetaSet.File.Name);
+                    MetaSet.MainForm.Text = $"MetaSet — {Path.GetFileName(MetaSet.File.Name)}";
                     
                     ReadIt();
                     return 0;
