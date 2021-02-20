@@ -1,7 +1,7 @@
 <img width="90" height="90" align="left" alt="MetaSet Logo"  src="MetaSet Gradient Logo.png">
 
 ## MetaSet Program
-**MetaSet** — is a simple tool, that makes possible to *change metadata*.
+**MetaSet** — is a simple tool, that makes possible *changing metadata*.
 
 ### Supported Formats
   MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
