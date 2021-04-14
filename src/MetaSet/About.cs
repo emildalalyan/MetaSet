@@ -16,6 +16,9 @@ namespace MetaSet
         {
             InitializeComponent();
             this.label3.Text = MetaSet.Version;
+#if NET5_0
+            this.label3.Text += Properties.Resources.RunningOnNET5;
+#endif
         }
     }
 }

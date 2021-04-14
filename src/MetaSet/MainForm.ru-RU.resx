@@ -118,35 +118,337 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
+  <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
   </data>
-  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+  <data name="openToolStripMenuItem.Text" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="OpenCatalogMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="OpenCatalogMenuItem.Text" xml:space="preserve">
+    <value>Открыть каталог</value>
+  </data>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="saveMetadataAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="saveMetadataAsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить метаданные как...</value>
+  </data>
+  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 6</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 22</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="createNewInstanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="createNewInstanceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Создать новый экземляр...</value>
+  </data>
+  <data name="copyInformationAboutTrackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="copyInformationAboutTrackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сделать скриншот...</value>
+  </data>
+  <data name="playATrackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="playATrackToolStripMenuItem.Text" xml:space="preserve">
     <value>Воспроизвести Трек...</value>
   </data>
-  <data name="copyFilenameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
+  <data name="extractACoverToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
   </data>
-  <data name="copyFilenameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Копировать имя файла...</value>
+  <data name="extractACoverToolStripMenuItem.Text" xml:space="preserve">
+    <value>Извлечь обложку...</value>
   </data>
-  <data name="copyAbsoluteFilenameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>296, 22</value>
+  <data name="checkAPropertiesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
   </data>
-  <data name="copyAbsoluteFilenameToolStripMenuItem.Text" xml:space="preserve">
-    <value>Копировать абсолютный путь к файлу...</value>
+  <data name="checkAPropertiesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Просмотреть свойства...</value>
   </data>
-  <data name="listContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 70</value>
+  <data name="loadMetadataFromAFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
   </data>
-  <data name="quantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 12</value>
+  <data name="loadMetadataFromAFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить метаданные из Файла...</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 15</value>
+  <data name="deleteAnyTagsInFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 22</value>
+  </data>
+  <data name="deleteAnyTagsInFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Удалить теги из Файла...</value>
+  </data>
+  <data name="advancedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 20</value>
+  </data>
+  <data name="advancedToolStripMenuItem.Text" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="repositoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="repositoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Репозиторий</value>
+  </data>
+  <data name="donateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="donateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Пожертвование</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 6</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 40</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>505, 23</value>
+  </data>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 69</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 23</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Артист</value>
+  </data>
+  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>345, 69</value>
+  </data>
+  <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 23</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Альбом</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Количество файлов:</value>
+    <value>Год</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 106</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>№ Трека</value>
+  </data>
+  <data name="textBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>205, 106</value>
+  </data>
+  <data name="textBox17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>263, 106</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Жанр</value>
+  </data>
+  <data name="textBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 143</value>
+  </data>
+  <data name="textBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 23</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Текст песни</value>
+  </data>
+  <data name="textBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 172</value>
+  </data>
+  <data name="textBox8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 23</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 172</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 20</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Композитор</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Копирайт</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Номер диска</value>
+  </data>
+  <data name="changepict.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="changepict.Text" xml:space="preserve">
+    <value>Обновить обложку...</value>
+  </data>
+  <data name="dthecov.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="dthecov.Text" xml:space="preserve">
+    <value>Удалить обложку...</value>
+  </data>
+  <data name="copyimg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="copyimg.Text" xml:space="preserve">
+    <value>Скопировать обложку...</value>
+  </data>
+  <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 70</value>
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value>Для изменения, удаления, или копирования изображения, откройте контекстное меню.
+</value>
+  </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 284</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Является частью компиляции</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 23</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Исполнители</value>
+  </data>
+  <data name="textBox11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 215</value>
+  </data>
+  <data name="textBox11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 23</value>
+  </data>
+  <data name="textBox11.ToolTip" xml:space="preserve">
+    <value>Чтобы ввести более одного исполнителя, введите их через запятую.
+</value>
+  </data>
+  <data name="textBox13.ToolTip" xml:space="preserve">
+    <value>ISRC (International Standard Recording Code) - это код для идентификации музыки</value>
+  </data>
+  <data name="textBox14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 23</value>
+  </data>
+  <data name="textBox14.ToolTip" xml:space="preserve">
+    <value>Amazon ID - это ИДентификационный код.</value>
+  </data>
+  <data name="textBox15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 246</value>
+  </data>
+  <data name="textBox15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 23</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 247</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 21</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Автор Ремикса</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 246</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 106</value>
+  </data>
+  <data name="textBox18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 324</value>
+  </data>
+  <data name="textBox18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 23</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 22</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Дирижёр</value>
+  </data>
+  <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>454, 324</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 21</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Ключевая нота</value>
+  </data>
+  <data name="textBox20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 324</value>
+  </data>
+  <data name="textBox20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 324</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 22</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Издатель</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

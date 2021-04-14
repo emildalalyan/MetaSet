@@ -68,5 +68,14 @@ namespace MetaSet.Properties {
                 return ResourceManager.GetString("FolderDialogCaption", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  (running on .NET 5).
+        /// </summary>
+        internal static string RunningOnNET5 {
+            get {
+                return ResourceManager.GetString("RunningOnNET5", resourceCulture);
+            }
+        }
     }
 }

@@ -50,30 +50,30 @@ namespace MetaSet
             // 
             // listContext
             // 
-            resources.ApplyResources(this.listContext, "listContext");
             this.listContext.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.listContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.copyFilenameToolStripMenuItem,
             this.copyAbsoluteFilenameToolStripMenuItem});
             this.listContext.Name = "listContext";
+            resources.ApplyResources(this.listContext, "listContext");
             // 
             // toolStripMenuItem2
             // 
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // copyFilenameToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyFilenameToolStripMenuItem, "copyFilenameToolStripMenuItem");
             this.copyFilenameToolStripMenuItem.Name = "copyFilenameToolStripMenuItem";
+            resources.ApplyResources(this.copyFilenameToolStripMenuItem, "copyFilenameToolStripMenuItem");
             this.copyFilenameToolStripMenuItem.Click += new System.EventHandler(this.copyFilenameToolStripMenuItem_Click);
             // 
             // copyAbsoluteFilenameToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyAbsoluteFilenameToolStripMenuItem, "copyAbsoluteFilenameToolStripMenuItem");
             this.copyAbsoluteFilenameToolStripMenuItem.Name = "copyAbsoluteFilenameToolStripMenuItem";
+            resources.ApplyResources(this.copyAbsoluteFilenameToolStripMenuItem, "copyAbsoluteFilenameToolStripMenuItem");
             this.copyAbsoluteFilenameToolStripMenuItem.Click += new System.EventHandler(this.copyAbsoluteFilenameToolStripMenuItem_Click);
             // 
             // quantity
