@@ -15,6 +15,6 @@
 ### It uses some 3rd-party libraries?
   Yes, it uses **[TagLibSharp](http://github.com/mono/taglib-sharp)**
   
-### Where are releases?
+### Where i can download releases?
 [**There**](https://github.com/emildalalyan/MetaSet/releases) are releases.
   
