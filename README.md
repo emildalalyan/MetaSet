@@ -3,10 +3,10 @@
 ## MetaSet Program
 **MetaSet** — is a simple tool, that makes possible *changing metadata*.
 
-### What are requirements
+### What are requirements?
   MetaSet requires **.NET 5** for working (v1.5 or above)
 
-### Supported Formats
+### Which formats MetaSet is supporting?
   MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
  
 ### It is freeware or open source?
