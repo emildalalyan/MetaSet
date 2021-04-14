@@ -9,7 +9,7 @@
 ### Which formats MetaSet is supporting?
   MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
  
-### It is freeware or open source?
+### It is freeware or open source software?
   MetaSet is an *open-source* program. It published under **GNU LGPL v3** licence.
 
 ### It uses some 3rd-party libraries?
