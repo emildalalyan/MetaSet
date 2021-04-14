@@ -13,7 +13,7 @@
   MetaSet is an *open-source* program. It published under **GNU LGPL v3** licence.
 
 ### It uses some 3rd-party libraries?
-  Yes, it uses **[TagLibSharp](http://github.com/mono/taglib-sharp)**
+  Yes, MetaSet is using **[TagLibSharp](http://github.com/mono/taglib-sharp)**
   
 ### Where i can download releases?
 [**There**](https://github.com/emildalalyan/MetaSet/releases) are releases.
