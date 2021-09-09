@@ -1,7 +1,7 @@
 <img width="90" height="90" align="left" alt="MetaSet Logo"  src="MetaSet Gradient Logo.png">
 
 ## MetaSet Program
-**MetaSet** — is a simple tool, which makes possible *changing metadata*.
+**MetaSet** — is a simple tool, which can **change metadata** of sound files. 
 
 ### What are requirements?
   MetaSet requires **.NET 5** for working (v1.5 or above)
