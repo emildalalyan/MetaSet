@@ -1,7 +1,7 @@
-<img width="128" height="128" align="left" alt="MetaSet Logo"  src="metaset.png">
+<img width="96" height="96" align="left" alt="MetaSet Logo"  src="MetaSet Gradient Logo.png">
 
 ## Программа MetaSet
-**MetaSet** — это простая утилита, которая позволяет *изменить метаданные*.
+**MetaSet** — это простая утилита, которая позволяет *изменить метаданные* аудио-записей.
 
 ### Какие форматы поддерживает MetaSet?
   MetaSet поддерживает следующие форматы: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
