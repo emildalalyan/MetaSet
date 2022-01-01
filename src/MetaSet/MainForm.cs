@@ -15,17 +15,7 @@ namespace MetaSet
     public partial class MainForm : Form
     {
 		/// <summary>
-		/// If you want to help me, then donate me there.
-		/// </summary>
-		public const string DonateLink = "https://donationalerts.com/r/emildalalyan";
-
-		/// <summary>
-		/// Link to the repo of the MetaSet program
-		/// </summary>
-		public const string RepoLink = "https://github.com/emildalalyan/MetaSet";
-
-		/// <summary>
-		/// Represents currently opened metafile (file with metadata)
+		/// Represents currently opened file with metadata
 		/// </summary>
 		public TagLib.File MetaFile { get; private set; }
 
@@ -40,7 +30,7 @@ namespace MetaSet
 			{
 				MetaSet.MainForm.pictureBox1.Image = value;
 				MetaSet.MainForm.imagesize.Text = (value != null) ? (value.Size.Width + "x" + value.Size.Height) : string.Empty;
-				MetaFile.Tag.Pictures = (value != null) ? new TagLib.Picture[1]
+				MetaFile.Tag.Pictures = (value != null) ? new TagLib.Picture[]
 				{
 					new()
 					{
@@ -48,7 +38,7 @@ namespace MetaSet
 						Type = TagLib.PictureType.Media,
 						Data = value.ToArrayOfBytes()
 					}
-				} : Array.Empty<TagLib.Picture>();
+				} : Array.Empty<TagLib.IPicture>();
 				MetaSet.MainForm.imagetype.Text = (value != null) ? MetaFile.Tag.Pictures[0].MimeType : string.Empty;
 			}
 		}
@@ -56,13 +46,13 @@ namespace MetaSet
 		/// <summary>
 		/// Creates new instance of <see cref="MainForm"/>
 		/// </summary>
-		/// <param name="args">Represents program startup-arguments</param>
+		/// <param name="args">Represents program startup arguments</param>
 		public MainForm(string[] args)
 		{
 			InitializeComponent();
 			MetaSet.MainForm = this;
 
-            #region Program Arguments
+#region Program Arguments
 
             if (args.Length == 0) return;
 
@@ -70,7 +60,7 @@ namespace MetaSet
 			{
 				if (args[0] == "-s")
 				{
-					Location = new(Convert.ToInt16(args[1]), Convert.ToInt16(args[2]));
+					Location = new(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
 					StartPosition = FormStartPosition.Manual;
 				}
 				else OpenFile(args[0]);
@@ -80,7 +70,7 @@ namespace MetaSet
 				MessageBox.Show("Invalid arguments!", "MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 			}
 
-			#endregion
+#endregion
 		}
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,7 +87,7 @@ namespace MetaSet
 		{
 			Process.Start(new ProcessStartInfo()
 			{
-				FileName = DonateLink,
+				FileName = MetaSet.DonateLink,
 				UseShellExecute = true
 			});
 		}
@@ -107,45 +97,45 @@ namespace MetaSet
 		/// </summary>
 		public void CloseFile()
 		{
-			if (MetaFile != null) MetaFile.Dispose();
+			if (MetaFile != null) this.MetaFile.Dispose();
 
-			MetaFile = null;
-			Text = "MetaSet";
-			saveToolStripMenuItem.Enabled = false;
-			closeToolStripMenuItem.Enabled = false;
-			extractACoverToolStripMenuItem.Enabled = false;
-			copyInformationAboutTrackToolStripMenuItem.Enabled = false;
-			playATrackToolStripMenuItem.Enabled = false;
-			checkAPropertiesToolStripMenuItem.Enabled = false;
-			textBox1.Text = string.Empty;
-			textBox2.Text = string.Empty;
-			textBox3.Text = string.Empty;
-			textBox4.Text = string.Empty;
-			textBox5.Text = string.Empty;
-			textBox6.Text = string.Empty;
-			textBox7.Text = string.Empty;
-			textBox8.Text = string.Empty;
-			textBox9.Text = string.Empty;
-			textBox10.Text = string.Empty;
-			textBox11.Text = string.Empty;
-			textBox13.Text = string.Empty;
-			checkBox1.Checked = false;
-			checkBox1.Enabled = true;
-			pictureBox1.Image = null;
-			textBox12.Text = string.Empty;
-			textBox14.Text = string.Empty;
-			textBox15.Text = string.Empty;
-			saveAsToolStripMenuItem.Enabled = false;
-			saveMetadataAsToolStripMenuItem.Enabled = false;
-			loadMetadataFromAFileToolStripMenuItem.Enabled = false;
-			textBox16.Text = string.Empty;
-			textBox17.Text = string.Empty;
-			textBox18.Text = string.Empty;
-			textBox19.Text = string.Empty;
-			textBox20.Text = string.Empty;
-			imagetype.Text = string.Empty;
-			imagesize.Text = string.Empty;
-			deleteAnyTagsInFileToolStripMenuItem.Enabled = false;
+			this.MetaFile = null;
+			this.Text = "MetaSet";
+			this.saveToolStripMenuItem.Enabled = false;
+			this.closeToolStripMenuItem.Enabled = false;
+			this.extractACoverToolStripMenuItem.Enabled = false;
+			this.copyInformationAboutTrackToolStripMenuItem.Enabled = false;
+			this.playATrackToolStripMenuItem.Enabled = false;
+			this.checkAPropertiesToolStripMenuItem.Enabled = false;
+			this.textBox1.Text = string.Empty;
+			this.textBox2.Text = string.Empty;
+			this.textBox3.Text = string.Empty;
+			this.textBox4.Text = string.Empty;
+			this.textBox5.Text = string.Empty;
+			this.textBox6.Text = string.Empty;
+			this.textBox7.Text = string.Empty;
+			this.textBox8.Text = string.Empty;
+			this.textBox9.Text = string.Empty;
+			this.textBox10.Text = string.Empty;
+			this.textBox11.Text = string.Empty;
+			this.textBox13.Text = string.Empty;
+			this.checkBox1.Checked = false;
+			this.checkBox1.Enabled = true;
+			this.pictureBox1.Image = null;
+			this.textBox12.Text = string.Empty;
+			this.textBox14.Text = string.Empty;
+			this.textBox15.Text = string.Empty;
+			this.saveAsToolStripMenuItem.Enabled = false;
+			this.saveMetadataAsToolStripMenuItem.Enabled = false;
+			this.loadMetadataFromAFileToolStripMenuItem.Enabled = false;
+			this.textBox16.Text = string.Empty;
+			this.textBox17.Text = string.Empty;
+			this.textBox18.Text = string.Empty;
+			this.textBox19.Text = string.Empty;
+			this.textBox20.Text = string.Empty;
+			this.imagetype.Text = string.Empty;
+			this.imagesize.Text = string.Empty;
+			this.deleteAnyTagsInFileToolStripMenuItem.Enabled = false;
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,11 +202,7 @@ namespace MetaSet
 		{
 			if (MetaFile == null) return;
 			
-			if (!uint.TryParse(textBox4.Text, out uint value))
-			{
-				textBox4.Text = "0";
-			}
-			
+			if (!uint.TryParse(textBox4.Text, out uint value)) textBox4.Text = "0";
 			MetaFile.Tag.Year = value;
 		}
 
@@ -270,30 +256,32 @@ namespace MetaSet
 
 		private void extractACoverToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (MetaFile == null) return;
+			if (MetaFile == null || Cover == null) return;
+
+			string extension = MetaFile.Tag.Pictures[0].MimeType.Split('/')[1];
 
 			using SaveFileDialog a = new()
 			{
-				Filter = MetaFile.Tag.Pictures[0].MimeType + " (*." + MetaFile.Tag.Pictures[0].MimeType.Split('/')[1] + ")|*." + MetaFile.Tag.Pictures[0].MimeType.Split('/')[1]
+				Filter = $"{MetaFile.Tag.Pictures[0].MimeType} (*.{extension})|*.{extension}"
 			};
 			
 			if (a.ShowDialog() != DialogResult.OK || a.FileName.Length < 1) return;
 
 			try
 			{
-				pictureBox1.Image.Save(a.FileName);
+				Cover.Save(a.FileName);
 			}
-			catch (Exception e2)
+			catch (Exception ex)
 			{
 				try
 				{
 					MetaFile.Tag.Pictures[0].Save(a.FileName);
 				}
-				catch (Exception e3)
+				catch (Exception ex2)
 				{
 					MessageBox.Show("Errors with cover has occurred.\n" +
-						$"Method 1 — Image.Save(): {e2.Message}\n" +
-						$"Method 2 — FileStream.Write(File.Tag.Pictures[0].Data.Data): {e3.Message}", "Unexpected error.", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+						$"Method 1 — Image.Save(): {ex.Message}\n" +
+						$"Method 2 — File.Tag.Pictures[0].Save(): {ex2.Message}", "Unexpected error.", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 				}
 			}
 		}
@@ -305,9 +293,9 @@ namespace MetaSet
 
 		private void repositoryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Process.Start(new ProcessStartInfo
+			Process.Start(new ProcessStartInfo()
 			{
-				FileName = RepoLink,
+				FileName = MetaSet.RepoLink,
 				UseShellExecute = true
 			});
 		}
@@ -316,12 +304,14 @@ namespace MetaSet
 		{
 			if (MetaFile == null) return;
 
-			new TrackProperties().ShowDialog();
+			using TrackProperties form = new();
+
+			form.ShowDialog();
 		}
 
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
-			if (MetaFile == null || MetaFile.ID3v2Supported()) return;
+			if (MetaFile == null || !MetaFile.ID3v2Supported()) return;
 
 			((TagLib.Id3v2.Tag)MetaFile.GetTag(TagLib.TagTypes.Id3v2)).SetTextFrame("TCMP", checkBox1.Checked ? "1" : "0");	
 		}
@@ -353,9 +343,11 @@ namespace MetaSet
 
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			string extension = Path.GetExtension(MetaFile.Name);
+
 			using SaveFileDialog sfd = new()
 			{
-				Filter = "File (*" + Path.GetExtension(MetaFile.Name) + ")|*" + Path.GetExtension(MetaFile.Name)
+				Filter = $"File (*{extension})|*{extension}"
 			};
 
 			if (sfd.ShowDialog() == DialogResult.OK)
@@ -388,7 +380,7 @@ namespace MetaSet
 				using SaveFileDialog sfd = new()
 				{
 					Filter = "Metadata File (*.met)|*.met",
-					InitialDirectory = ((MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty)
+					InitialDirectory = (MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty
 				};
 
 				if (sfd.ShowDialog() == DialogResult.OK)
@@ -511,15 +503,15 @@ namespace MetaSet
 		private void dthecov_Click(object sender, EventArgs e)
 		{
 			if (MetaFile == null) return;
-			
-			ClearPicture();
+
+			Cover = null;
 		}
 
 		private void copyimg_Click(object sender, EventArgs e)
 		{
-			if (MetaFile == null) return;
+			if (MetaFile == null || Cover == null) return;
 			
-			Clipboard.SetImage(pictureBox1.Image);
+			Clipboard.SetImage(Cover);
 		}
 
 		private void takescrmenuitem_click(object sender, EventArgs e)
@@ -540,22 +532,11 @@ namespace MetaSet
 		}
 
 		/// <summary>
-		/// Clears first picture of <see cref="TagLib.Tag"/> (metafile cover).
-		/// </summary>
-		public void ClearPicture()
-		{
-			MetaFile.Tag.Pictures = null;
-			pictureBox1.Image = null;
-			imagetype.Text = string.Empty;
-			imagesize.Text = string.Empty;
-		}
-
-		/// <summary>
 		/// Remove all tags (including cover) in a metafile
 		/// </summary>
 		public void RemoveTags()
 		{
-			ClearPicture();
+			Cover = null;
 			MetaFile.RemoveTags(TagLib.TagTypes.AllTags);
 		}
 
@@ -571,7 +552,7 @@ namespace MetaSet
 				using OpenFileDialog ofd = new()
 				{
 					Filter = "Metadata File (*.met)|*.met|MPEG-3 Audio File (*.mp3)|*.mp3",
-					InitialDirectory = ((MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty)
+					InitialDirectory = (MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty
 				};
 
 				if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.Length > 0)
@@ -582,7 +563,7 @@ namespace MetaSet
 			}
 			catch (Exception e)
 			{
-				MessageBox.Show("Error was appeared. Error message was: " + e.Message + ". HRESULT: 0x" + e.HResult.ToString("X"), "Error in MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+				MessageBox.Show($"Error was appeared. Error message was: {e.Message}. HRESULT: 0x{e.HResult.ToString("X")}", "Error occurred in MetaSet", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 			}
 		}
 
@@ -594,7 +575,7 @@ namespace MetaSet
 			using OpenFileDialog a = new()
 			{
 				Filter = "All Supported Formats (*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a)|*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a",
-				InitialDirectory = ((MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty)
+				InitialDirectory = (MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty
 			};
 
 			if (a.ShowDialog() == DialogResult.OK)
@@ -606,21 +587,21 @@ namespace MetaSet
 		/// <summary>
 		/// Open file by the specified location
 		/// </summary>
-		/// <param name="str"></param>
-		public void OpenFile(string str)
+		/// <param name="location"></param>
+		public void OpenFile(string location)
 		{
-			if (str.Length <= 1 || !File.Exists(str)) return;
+			if (location.Length < 1 || !File.Exists(location)) return;
 
 			CloseFile();
 
-			if (!MetaSet.FormatSupport.Contains(Path.GetExtension(str)))
+			if (!MetaSet.FormatSupport.Contains(Path.GetExtension(location)))
 			{
 				MessageBox.Show("Sorry, but this file format is not supported.", "MetaSet");
 				return;
 			}
 			try
 			{
-				MetaFile = TagLib.File.Create(str);
+				MetaFile = TagLib.File.Create(location);
 				Text = "MetaSet — " + Path.GetFileName(MetaFile.Name);
 				ReadTags();
 			}
@@ -652,6 +633,7 @@ namespace MetaSet
 			textBox8.Text = (MetaFile.Tag.Composers.Length > 0) ? MetaFile.Tag.Composers[0] : string.Empty;
 			textBox10.Text = MetaFile.Tag.Disc.ToString();
 			checkBox1.Checked = MetaFile.ID3v2Supported() ? ((TagLib.Id3v2.Tag)MetaFile.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1" : false;
+			checkBox1.Enabled = MetaFile.ID3v2Supported();
 			textBox11.Text = (MetaFile.Tag.Performers != null) ? string.Join(",", MetaFile.Tag.Performers) : string.Empty;
 			textBox12.Text = MetaFile.Tag.BeatsPerMinute.ToString();
 			saveToolStripMenuItem.Enabled = true;
@@ -672,6 +654,7 @@ namespace MetaSet
 				if (MetaFile.Tag.Pictures[0].Data.Count < 1) return;
 
 				if (MetaFile.Tag.Pictures[0].MimeType == "image/jpg") MetaFile.Tag.Pictures[0].MimeType = "image/jpeg";
+				// Some players don't show cover if mime-type is "image/jpg", but all is normal if it's "image/jpeg"
 
 				using (MemoryStream ms = new(MetaFile.Tag.Pictures[0].Data.Data)) pictureBox1.Image = Image.FromStream(ms);
 
@@ -680,8 +663,8 @@ namespace MetaSet
 					ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
 					MetaFile.Tag.Pictures[0].MimeType = codecs.First((ImageCodecInfo codec) => codec.FormatID == pictureBox1.Image.RawFormat.Guid).MimeType;
 				}
-				imagetype.Text = ((MetaFile.Tag.Pictures[0].MimeType.Length > 0) ? MetaFile.Tag.Pictures[0].MimeType : string.Empty);
-				imagesize.Text = ((pictureBox1.Image != null) ? (pictureBox1.Image.Size.Width + "x" + pictureBox1.Image.Size.Height) : string.Empty);
+				imagetype.Text = (MetaFile.Tag.Pictures[0].MimeType.Length > 0) ? MetaFile.Tag.Pictures[0].MimeType : string.Empty;
+				imagesize.Text = (Cover != null) ? (Cover.Size.Width + "x" + Cover.Size.Height) : string.Empty;
 			}
 			else imagetype.Text = imagesize.Text = string.Empty;
 		}

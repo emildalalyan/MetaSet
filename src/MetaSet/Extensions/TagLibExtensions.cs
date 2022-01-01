@@ -25,7 +25,7 @@ namespace MetaSet
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public static bool ID3v2Supported(this TagLib.File file) => file.GetTag(TagLib.TagTypes.Id3v2) is TagLib.Tag;
+        public static bool ID3v2Supported(this TagLib.File file) => file.GetTag(TagLib.TagTypes.Id3v2) != null;
 
         /// <summary>
         /// Load <see cref="TagLib.Tag"/> from the specified file location

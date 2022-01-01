@@ -18,6 +18,8 @@ namespace MetaSet
             this.label3.Text = MetaSet.Version;
 #if NET5_0
             this.label3.Text += Properties.Resources.RunningOnNET5;
+#elif NET6_0
+            this.label3.Text += Properties.Resources.RunningOnNET6;
 #endif
         }
     }

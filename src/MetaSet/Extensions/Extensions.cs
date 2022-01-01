@@ -29,7 +29,7 @@ namespace MetaSet
         static public string IfNullReturnNA(this string[] str, int index, string append = "")
         {
             if (str == null) return "N/A";
-            return (str.Length > index ? str[index] + append : "N/A");
+            return str.Length > index && str[index] != null ? str[index] + append : "N/A";
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace MetaSet
         /// </summary>
         /// <param name="dec"></param>
         /// <param name="append"></param>
-        static public string IfNullReturnNA(this int dec, string append = "")
+        static public string IfZeroOrLessReturnNA(this int dec, string append = "")
         {
             if (dec < 1) return "N/A";
             else return dec.ToString() + append;

@@ -51,7 +51,7 @@ namespace MetaSet
                     this.Close();
                     return;
                 }
-                quantity.Text = files.Count.IfNullReturnNA();
+                quantity.Text = files.Count.IfZeroOrLessReturnNA();
                 this.Text = dialog.SelectedPath.Length > 0 ? $"{dialog.SelectedPath} — MetaSet" : "MetaSet";
                 this.Show();
             }

@@ -2,18 +2,23 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>MetaSet.Program</StartupObject>
     <ApplicationIcon>metaset.ico</ApplicationIcon>
     <Authors>Emil Dalalyan</Authors>
     <Company>Emil Dalalyan</Company>
-    <PackageLicenseExpression>GNU LGPL v.3</PackageLicenseExpression>
     <Copyright>Emil Dalalyan</Copyright>
     <PackageProjectUrl>github.com/emildalalyan/MetaSet</PackageProjectUrl>
-    <RepositoryType>github.com/emildalalyan/MetaSet</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MetaSet.snk</AssemblyOriginatorKeyFile>
+    <Nullable>disable</Nullable>
+    <Version>1.5.1</Version>
+    <PackageReadmeFile>MetaSet</PackageReadmeFile>
+    <RepositoryUrl>github.com\emildalalyan\MetaSet</RepositoryUrl>
+    <PackageLicenseFile>C:\Users\Emil\Desktop\MetaSet\MetaSet\bin\Release\net6.0-windows7.0\LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,6 +26,12 @@
     <Optimize>true</Optimize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="github.com\**" />
+    <EmbeddedResource Remove="github.com\**" />
+    <None Remove="github.com\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="TagLibSharp" Version="2.2.0" />
@@ -40,5 +51,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="echo Building MetaSet..." />
+  </Target>
 
 </Project>
