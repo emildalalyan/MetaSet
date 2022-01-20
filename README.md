@@ -4,7 +4,7 @@
 **MetaSet** — is a simple tool, which can **change metadata** of sound files. 
 
 ### What're requirements?
-  MetaSet requires **.NET 5** for working (v1.5 or above)
+  MetaSet requires **.NET 6** for working (v1.5 or above)
 
 ### Which formats does MetaSet support?
   MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
