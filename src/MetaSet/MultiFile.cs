@@ -12,8 +12,14 @@ namespace MetaSet
     /// </summary>
     public partial class MultiFileManager : Form
     {
-        private readonly List<string> files = new();
+        /// <summary>
+        /// List of files that you can see in this instance of <see cref="MultiFileManager"/>.
+        /// </summary>
+        private List<string> FilesList { get; } = new();
 
+        /// <summary>
+        /// Creates an instance of <see cref="MultiFileManager"/>
+        /// </summary>
         public MultiFileManager()
         {
             InitializeComponent();
@@ -21,7 +27,7 @@ namespace MetaSet
 
         private void listfiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MetaSet.MainForm.OpenFile(files[(sender as ListBox).SelectedIndex]);
+            MetaSet.MainForm.OpenFile(FilesList[(sender as ListBox).SelectedIndex]);
         }
 
         /// <summary>
@@ -44,14 +50,14 @@ namespace MetaSet
                     if (!MetaSet.FormatSupport.Contains(Path.GetExtension(file))) continue;
 
                     listfiles.Items.Add(Path.GetFileName(file));
-                    files.Add(file);
+                    FilesList.Add(file);
                 }
-                if (files.Count < 1)
+                if (FilesList.Count < 1)
                 {
                     this.Close();
                     return;
                 }
-                quantity.Text = files.Count.IfZeroOrLessReturnNA();
+                quantity.Text = FilesList.Count.IfZeroOrLessReturnNA();
                 this.Text = dialog.SelectedPath.Length > 0 ? $"{dialog.SelectedPath} — MetaSet" : "MetaSet";
                 this.Show();
             }
@@ -63,7 +69,7 @@ namespace MetaSet
             if (listfiles.SelectedItem == null) return;
             Process.Start(new ProcessStartInfo()
             {
-                FileName = files[listfiles.SelectedIndex],
+                FileName = FilesList[listfiles.SelectedIndex],
                 UseShellExecute = true
             });
         }
@@ -77,7 +83,7 @@ namespace MetaSet
         private void copyAbsoluteFilenameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (listfiles.SelectedItem == null) return;
-            Clipboard.SetText(files[listfiles.SelectedIndex]);
+            Clipboard.SetText(FilesList[listfiles.SelectedIndex]);
         }
     }
 }

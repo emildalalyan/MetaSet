@@ -8,7 +8,7 @@
         /// <summary>
         /// <see cref="MetaSet"/> version string constant
         /// </summary>
-        public const string Version = "1.5.1-stable";
+        public const string Version = "1.5.2-stable";
 
         /// <summary>
         /// Instance of the <see cref="MainForm"/>

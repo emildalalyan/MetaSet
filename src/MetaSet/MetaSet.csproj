@@ -11,20 +11,25 @@
     <Copyright>Emil Dalalyan</Copyright>
     <PackageProjectUrl>github.com/emildalalyan/MetaSet</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>MetaSet.snk</AssemblyOriginatorKeyFile>
     <Nullable>disable</Nullable>
-    <Version>1.5.1</Version>
+    <Version>1.5.2</Version>
     <PackageReadmeFile>MetaSet</PackageReadmeFile>
     <RepositoryUrl>github.com\emildalalyan\MetaSet</RepositoryUrl>
-    <PackageLicenseFile>C:\Users\Emil\Desktop\MetaSet\MetaSet\bin\Release\net6.0-windows7.0\LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIcon>metaset.ico</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
+    <Optimize>False</Optimize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -50,6 +55,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="metaset.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

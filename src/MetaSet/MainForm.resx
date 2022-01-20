@@ -661,6 +661,15 @@
   <data name="textBox6.AutoCompleteCustomSource23" xml:space="preserve">
     <value>Chanson</value>
   </data>
+  <data name="textBox6.AutoCompleteCustomSource24" xml:space="preserve">
+    <value>Chamber pop</value>
+  </data>
+  <data name="textBox6.AutoCompleteCustomSource25" xml:space="preserve">
+    <value>Grunge</value>
+  </data>
+  <data name="textBox6.AutoCompleteCustomSource26" xml:space="preserve">
+    <value>Religious</value>
+  </data>
   <data name="textBox6.Location" type="System.Drawing.Point, System.Drawing">
     <value>489, 106</value>
   </data>

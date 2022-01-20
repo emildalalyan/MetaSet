@@ -359,7 +359,10 @@
             resources.GetString("textBox6.AutoCompleteCustomSource20"),
             resources.GetString("textBox6.AutoCompleteCustomSource21"),
             resources.GetString("textBox6.AutoCompleteCustomSource22"),
-            resources.GetString("textBox6.AutoCompleteCustomSource23")});
+            resources.GetString("textBox6.AutoCompleteCustomSource23"),
+            resources.GetString("textBox6.AutoCompleteCustomSource24"),
+            resources.GetString("textBox6.AutoCompleteCustomSource25"),
+            resources.GetString("textBox6.AutoCompleteCustomSource26")});
             this.textBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox6.Name = "textBox6";
