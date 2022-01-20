@@ -7,7 +7,7 @@
   MetaSet requires **.NET 6** for working.
 
 ### Which formats does MetaSet support?
-  MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a**
+  MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**
  
 ### Is it freeware or open source software?
   MetaSet is an *open-source* program. It published under **GNU LGPL v3** licence.
