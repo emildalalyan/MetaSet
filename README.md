@@ -3,6 +3,9 @@
 ## MetaSet Program
 **MetaSet** — is a simple tool, which can **change metadata** of sound files. 
 
+### I don't understand English
+  🇷🇺 [**Русская** версия README.md](README.ru-RU.md)
+
 ### What're requirements?
   MetaSet requires **.NET 6** for working.
 
