@@ -9,7 +9,7 @@ MetaSet поддерживает следующие форматы: **.mp3, .fla
 ### Какие системные требования предъявляет MetaSet?
 MetaSet требует **.NET 6** для своей работы.
   
-Скачать **.NET 6** можно на [официальном сайте](http://https://dotnet.microsoft.com/en-us/download/dotnet) Microsoft.
+Скачать **.NET 6** можно на [официальном сайте](https://dotnet.microsoft.com/en-us/download/dotnet) Microsoft.
   
 Для работы программы нужно скачать .NET **Desktop Runtime** или **SDK**, а не **Runtime**, причём с архитектурой соответствующей скачанному **MetaSet**
  
