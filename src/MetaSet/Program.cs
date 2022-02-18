@@ -13,10 +13,10 @@ namespace MetaSet
         internal static string[] ProvidedArguments { get; private set; }
 
         /// <summary>
-        /// The main entry point for the MetaSet program.
+        /// The main entry point of the <b>MetaSet</b> program.
         /// </summary>
         [STAThread]
-        static int Main(string[] args)
+        internal static int Main(string[] args)
         {
             // Uncomment below to set invariant culture in MetaSet.
 

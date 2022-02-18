@@ -3,7 +3,7 @@ using System.IO;
 namespace MetaSet
 {
     /// <summary>
-    /// <see langword="Class"/>, intended to add some features to <see ref="TagLib"/> library
+    /// <see langword="Class"/>, intended to add some features to <i>TagLib# library</i>
     /// </summary>
     public static class TagLibExtensions
     {

@@ -48,7 +48,7 @@ public partial class MainForm : Form
 				{
 					MimeType = value.RawFormat.GetMimeType(),
 					Type = TagLib.PictureType.Media,
-					Data = value.ToArrayOfBytes()
+					Data = value.ToByteArray()
 				}
 			} : Array.Empty<TagLib.IPicture>();
 			MetaSet.MainForm.imagetype.Text = (value != null) ? MetaFile.Tag.Pictures[0].MimeType : string.Empty;
@@ -74,7 +74,7 @@ public partial class MainForm : Form
 
 		Trace.WriteLine($"[Log] MetaSet version: {MetaSet.Version}");
 
-		#region Program Arguments
+#region Program Arguments
 
 		if (Program.ProvidedArguments.Length == 0) return;
 
@@ -187,7 +187,9 @@ public partial class MainForm : Form
 
 	private void createNewInstanceToolStripMenuItem_Click(object sender, EventArgs e)
 	{
-		Process.Start(Application.ExecutablePath, $"-s {this.Location.X + 32} {this.Location.Y + 32}");
+		const int WindowOffset = 32;
+
+		Process.Start(Application.ExecutablePath, $"-s {this.Location.X + WindowOffset} {this.Location.Y + WindowOffset}");
 	}
 
 	private void Form1_DragDrop(object sender, DragEventArgs e)

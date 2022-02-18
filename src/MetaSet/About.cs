@@ -49,9 +49,7 @@ namespace MetaSet
 
         private void TitleLabel_DoubleClick(object sender, EventArgs e)
         {
-            Random random = new();
-
-            int element = random.Next(0, SomeFavoriteSongs.Length - 1);
+            int element = new Random().Next(0, SomeFavoriteSongs.Length - 1);
 
             TitleLabel.Text = SomeFavoriteSongs[element].Name;
             TitleLabel.ForeColor = SomeFavoriteSongs[element].KeyColor;

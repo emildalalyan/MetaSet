@@ -7,17 +7,16 @@ namespace MetaSet
     /// <summary>
     /// Class contains some extensions
     /// </summary>
-    static class Extensions
+    public static class Extensions
     {
         /// <summary>
-        /// If <see cref="string"/> str == null, this function returns "N/A"
+        /// If <see cref="string"/> str == null or it's empty, this function returns "N/A"
         /// </summary>
         /// <param name="str"></param>
         /// <param name="append"></param>
         static public string IfNullReturnNA(this string str, string append = "")
         {
-            if (str == null) return "N/A";
-            return (str.Length > 0 ? str + append : "N/A");
+            return string.IsNullOrEmpty(str) ? "N/A" : str + append;
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace MetaSet
         /// </summary>
         /// <param name="img"></param>
         /// <returns></returns>
-        static public byte[] ToArrayOfBytes(this System.Drawing.Image img)
+        static public byte[] ToByteArray(this System.Drawing.Image img)
         {
             using MemoryStream m = new();
             img.Save(m, img.RawFormat);

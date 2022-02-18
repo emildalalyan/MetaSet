@@ -1,14 +1,14 @@
 ﻿namespace MetaSet
 {
     /// <summary>
-    /// Common <see cref="MetaSet"/> class. It contains currently opened file, <see cref="global::MetaSet.MainForm"/> instance, e.t.c
+    /// Common <see cref="MetaSet"/> class. It contains <see cref="global::MetaSet.MainForm"/> instance, e.t.c
     /// </summary>
     public static class MetaSet
     {
         /// <summary>
         /// <see cref="MetaSet"/> version string constant
         /// </summary>
-        public const string Version = "1.5.2-stable";
+        public const string Version = "1.5.3-stable";
 
         /// <summary>
         /// Instance of the <see cref="MainForm"/>
