@@ -9,7 +9,7 @@
 ### What're requirements?
 MetaSet requires **.NET 6** for working. 
 
-You can download **.NET 6** on Microsoft [official site](http://https://dotnet.microsoft.com/en-us/download/dotnet).
+You can download **.NET 6** on Microsoft [official site](https://dotnet.microsoft.com/en-us/download/dotnet).
   
 For program working you need to download .NET **Desktop Runtime** or **SDK**, but not **Runtime**, and with architecture corresponding to downloaded **MetaSet**.
 
