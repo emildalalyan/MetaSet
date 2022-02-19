@@ -4,7 +4,7 @@
 **MetaSet** — это простая утилита, которая позволяет *изменить метаданные* аудио-записей.
 
 ### Какие форматы поддерживает MetaSet?
-MetaSet поддерживает следующие форматы: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**
+MetaSet поддерживает следующие форматы: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**.
   
 ### Какие системные требования предъявляет MetaSet?
 MetaSet требует **.NET 6** для своей работы.
@@ -22,4 +22,4 @@ MetaSet - это *open-source* программа, т.е является **С**
   - **[Windows Forms](http://github.com/dotnet/winforms)**
   
 ### Где я могу скачать релизы?
-Вы можете скачать релизы [**здесь**](https://github.com/emildalalyan/MetaSet/releases) 
+Вы можете скачать релизы [**здесь**](https://github.com/emildalalyan/MetaSet/releases).
