@@ -1,4 +1,4 @@
-<img width="96" height="96" align="left" alt="MetaSet Logo"  src="MetaSet Gradient Logo.png">
+<img width="100" height="100" align="left" alt="MetaSet Logo"  src="metaset_material.png">
 
 ## Программа MetaSet
 **MetaSet** — это простая утилита, которая позволяет *изменить метаданные* аудио-записей.
