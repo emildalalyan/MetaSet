@@ -4,7 +4,10 @@
 **MetaSet** — is a simple tool, which can **change metadata** of sound files. 
 
 ### I don't understand English
-🇷🇺 [**Русская** версия README.md](README.ru-RU.md)
+🇷🇺 [**Русская** версия README.md](README.ru-RU.md).
+
+### Which formats does MetaSet support?
+MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**.
 
 ### What're requirements?
 MetaSet requires **.NET 6** for working. 
@@ -13,9 +16,6 @@ You can download **.NET 6** on Microsoft [official site](https://dotnet.microsof
   
 For program working you need to download .NET **Desktop Runtime** or **SDK**, but not **Runtime**, and with architecture corresponding to downloaded **MetaSet**.
 
-### Which formats does MetaSet support?
-MetaSet supports following formats: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**
- 
 ### Is it freeware or open source software?
 MetaSet is an *open-source* program. It published under **GNU LGPL v3** licence.
 
