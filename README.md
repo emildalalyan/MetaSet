@@ -1,4 +1,4 @@
-<img width="90" height="90" align="left" alt="MetaSet Logo"  src="MetaSet Gradient Logo.png">
+<img width="90" height="90" align="left" alt="MetaSet Logo"  src="metaset_material.png">
 
 ## MetaSet Program
 **MetaSet** — is a simple tool, which can **change metadata** of sound files. 
