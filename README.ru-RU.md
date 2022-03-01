@@ -4,7 +4,7 @@
 **MetaSet** — это простая утилита, которая позволяет *изменить метаданные* аудио-записей.
 
 ### Альтернативные зеркала
-Есть зеркало на GitLab: https://gitlab.com/emil.dalalyan/metaset
+Есть зеркало на **GitLab**: https://gitlab.com/emil.dalalyan/metaset
 
 ### Какие форматы поддерживает MetaSet?
 MetaSet поддерживает следующие форматы: **.mp3, .flac, .ogg, .wav, .wma, .m4a, .aac, .aiff**.
