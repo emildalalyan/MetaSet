@@ -3,6 +3,9 @@
 ## MetaSet Program
 **MetaSet** — is a simple tool, which can **change metadata** of sound files. 
 
+### Alternative mirrors
+There is mirror on GitLab: https://gitlab.com/emil.dalalyan/metaset
+
 ### I don't understand English
 🇷🇺 [**Русская** версия README.md](README.ru-RU.md).
 
