@@ -36,7 +36,7 @@ namespace MetaSet
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
-        public static string GetMimeType(this ImageFormat format) => ImageCodecInfo.GetImageEncoders().First(codec => codec.FormatID == format.Guid).MimeType;
+        public static string GetMimeType(this ImageFormat format) => ImageCodecInfo.GetImageDecoders().First(codec => codec.FormatID == format.Guid).MimeType;
 
         /// <summary>
         /// If <see cref="int"/> dec less than 1, then this function returns "N/A"
@@ -57,7 +57,9 @@ namespace MetaSet
         static public byte[] ToByteArray(this System.Drawing.Image img)
         {
             using MemoryStream m = new();
+            
             img.Save(m, img.RawFormat);
+            
             return m.ToArray();
         }
     }

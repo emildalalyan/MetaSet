@@ -12,18 +12,28 @@ namespace MetaSet
         /// </summary>
         public TrackProperties()
         {
+            const int MaxSymbolsInName = 30;
+
             InitializeComponent();
 
-            this.label1.Text = MetaSet.MainForm.MetaFile.Tag.Title ?? Path.GetFileName(MetaSet.MainForm.MetaFile.Name);
+            this.label1.Text = (MetaSet.MainForm.MetaFile.Tag.Title ?? Path.GetFileName(MetaSet.MainForm.MetaFile.Name));
+            
+            if(this.label1.Text.Length > MaxSymbolsInName) this.label1.Text = this.label1.Text.Substring(0, MaxSymbolsInName) + "...";
+
             this.label3.Text = MetaSet.MainForm.MetaFile.Properties.AudioBitrate.IfZeroOrLessReturnNA(" KB/s");
             this.label4.Text = MetaSet.MainForm.MetaFile.Properties.AudioChannels.IfZeroOrLessReturnNA();
             this.label6.Text = MetaSet.MainForm.MetaFile.Properties.AudioSampleRate.IfZeroOrLessReturnNA(" Hz");
 
             string codecs = string.Empty;
 
-            foreach (TagLib.ICodec one in MetaSet.MainForm.MetaFile.Properties.Codecs)
+            if(MetaSet.MainForm.MetaFile.Properties.Codecs != null)
             {
-                codecs += ((codecs.Length > 0) ? ", " : "") + one.Description;
+                foreach (TagLib.ICodec one in MetaSet.MainForm.MetaFile.Properties.Codecs)
+                {
+                    if (one == null) continue;
+
+                    codecs += ((codecs.Length > 0) ? ", " : "") + one.Description;
+                }
             }
 
             this.label8.Text = codecs.IfNullReturnNA();

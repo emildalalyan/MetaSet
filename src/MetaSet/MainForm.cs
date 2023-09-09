@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Media;
+using System.Threading;
 
 namespace MetaSet;
 
@@ -20,27 +21,23 @@ public partial class MainForm : Form
 	public TagLib.File MetaFile { get; private set; }
 
 	/// <summary>
-	/// Trace listener, that showing messagebox, when it's getting message string
-	/// </summary>
-	public MessageTraceListener MessageTrace { get; private set; } = new();
-
-#if DEBUG
-	/// <summary>
-	/// Trace listener, that outputs to console, when it's getting message string
-	/// </summary>
-	public ConsoleTraceListener ConsoleTrace { get; private set; } = new();
-#endif
-
-	/// <summary>
 	/// Represents <see cref="TagLib.Tag"/> first picture (cover).
 	/// </summary>
-	public Image Cover
+#nullable enable
+	public Image? Cover
+#nullable disable
 	{
 		get => MetaSet.MainForm.pictureBox1.Image;
 
 		set
 		{
+			Image previous = MetaSet.MainForm.pictureBox1.Image;
+
 			MetaSet.MainForm.pictureBox1.Image = value;
+
+			// We're disposing previous image, because it won't be used later.
+			if (previous != null) previous.Dispose();
+
 			MetaSet.MainForm.imagesize.Text = (value != null) ? (value.Size.Width + "x" + value.Size.Height) : string.Empty;
 			MetaFile.Tag.Pictures = (value != null) ? new TagLib.Picture[]
 			{
@@ -58,16 +55,16 @@ public partial class MainForm : Form
 	/// <summary>
 	/// Creates new instance of <see cref="MainForm"/>
 	/// </summary>
-	public MainForm()
+	public MainForm(string[] args)
 	{
 		InitializeComponent();
 
-		Trace.Listeners.Add(MessageTrace);
+		Trace.Listeners.Add(Program.MessageTrace);
 
 #if DEBUG
-		Trace.Listeners.Add(ConsoleTrace);
+		Trace.Listeners.Add(Program.ConsoleTrace);
 
-		Trace.WriteLine("[Log] DEBUG directive is defined, ConsoleTrace is added to listeners.");
+		Trace.WriteLine("[Log] DEBUG macro is defined, ConsoleTraceListener is added to listeners.");
 #endif
 
 		MetaSet.MainForm = this;
@@ -78,18 +75,37 @@ public partial class MainForm : Form
 
 		if (Program.ProvidedArguments.Length == 0) return;
 
-		try
+		for(int i = 0; i < Program.ProvidedArguments.Length; i++)
 		{
-			if (Program.ProvidedArguments[0] == "-s")
+			if (Program.ProvidedArguments[i] == "--location")
 			{
-				Location = new(Convert.ToInt32(Program.ProvidedArguments[1]), Convert.ToInt32(Program.ProvidedArguments[2]));
+				if (!int.TryParse(Program.ProvidedArguments[++i], out int x)
+				||  !int.TryParse(Program.ProvidedArguments[++i], out int y))
+				{
+					continue;
+				}
+
+				Location = new(x, y);
 				StartPosition = FormStartPosition.Manual;
 			}
-			else OpenFile(Program.ProvidedArguments[0]);
-		}
-		catch (Exception ex)
-		{
-			Trace.WriteLine($"[Warning] Invalid arguments have been provided. Exception message is: {ex.Message}");
+#if !DEBUG
+			else if (Program.ProvidedArguments[i] == "--tracecon")
+			{
+				Trace.Listeners.Add(Program.ConsoleTrace);
+
+				Trace.WriteLine("[Log] DEBUG macro is not defined, but ConsoleTraceListener is added to listeners (--tracecon).");
+			}
+#endif
+			else if (Program.ProvidedArguments[i] == "--help")
+            {
+				Trace.WriteLine("[Info] " +
+                    "Console arguments help:\n" +
+                    "\n\t--location [x] [y] \t: Changes window location" +
+                    "\n\t--tracecon \t\t: Add ConsoleTraceListener to listeners (only if DEBUG isn't defined)" +
+                    "\n\t--help \t\t\t: Write this help" +
+                    "\n\n\tUsage: metaset [arguments] [file name]");
+			}
+			else OpenFile(Program.ProvidedArguments[i]);
 		}
 
 #endregion
@@ -126,7 +142,6 @@ public partial class MainForm : Form
 		this.Text = "MetaSet";
 		this.saveToolStripMenuItem.Enabled = false;
 		this.closeToolStripMenuItem.Enabled = false;
-		this.extractACoverToolStripMenuItem.Enabled = false;
 		this.copyInformationAboutTrackToolStripMenuItem.Enabled = false;
 		this.playATrackToolStripMenuItem.Enabled = false;
 		this.checkAPropertiesToolStripMenuItem.Enabled = false;
@@ -144,7 +159,11 @@ public partial class MainForm : Form
 		this.textBox13.Text = string.Empty;
 		this.checkBox1.Checked = false;
 		this.checkBox1.Enabled = true;
+		
+		Image img = this.pictureBox1.Image;
 		this.pictureBox1.Image = null;
+		if (img != null) img.Dispose();
+
 		this.textBox12.Text = string.Empty;
 		this.textBox14.Text = string.Empty;
 		this.textBox15.Text = string.Empty;
@@ -159,6 +178,11 @@ public partial class MainForm : Form
 		this.imagetype.Text = string.Empty;
 		this.imagesize.Text = string.Empty;
 		this.deleteAnyTagsInFileToolStripMenuItem.Enabled = false;
+		this.delcoverbtn.Enabled = false;
+		this.loadfromcbbtn.Enabled = false;
+		this.loadfromimage.Enabled = false;
+		this.savetocbbtn.Enabled = false;
+		this.savetofilebtn.Enabled = false;
 	}
 
 	private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,7 +213,7 @@ public partial class MainForm : Form
 	{
 		const int WindowOffset = 32;
 
-		Process.Start(Application.ExecutablePath, $"-s {this.Location.X + WindowOffset} {this.Location.Y + WindowOffset}");
+		Process.Start(Application.ExecutablePath, $"--location {this.Location.X + WindowOffset} {this.Location.Y + WindowOffset}");
 	}
 
 	private void Form1_DragDrop(object sender, DragEventArgs e)
@@ -489,7 +513,7 @@ public partial class MainForm : Form
 		}
 		catch (Exception e)
 		{
-			Trace.WriteLine($"[Warning] {e.GetType().Name} was appeared. HRESULT was: 0x{e.HResult.ToString("X")}");
+			Trace.WriteLine($"[Warning] {e.GetType().Name} was appeared. HRESULT was: 0x{e.HResult:X}");
 		}
 	}
 
@@ -521,13 +545,21 @@ public partial class MainForm : Form
 		{
 			Filter = "All Supported Formats (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png|Joint Photographic Experts Group (*.jpg;*.jpeg)|*.jpg;*.jpeg|Portable Network Graphics (*.png)|*.png"
 		};
-		if (a.ShowDialog() == DialogResult.OK)
+
+		if (a.ShowDialog() == DialogResult.OK && File.Exists(a.FileName))
 		{
-			Cover = Image.FromFile(a.FileName);
+            try
+			{
+				Cover = Image.FromFile(a.FileName);
+			}
+			catch (Exception ex)
+            {
+				Trace.WriteLine($"[Error] Selected image couldn't be loaded. Thrown exception is: {ex.Message}");
+            }
 		}
 	}
 
-	private void dthecov_Click(object sender, EventArgs e)
+	private void delcoverbtn_Click(object sender, EventArgs e)
 	{
 		if (MetaFile == null) return;
 
@@ -592,7 +624,7 @@ public partial class MainForm : Form
 		}
 		catch (Exception e)
 		{
-			Trace.WriteLine($"[Warning] Error was appeared. Error message was: {e.Message}. HRESULT: 0x{e.HResult.ToString("X")}");
+			Trace.WriteLine($"[Warning] Error was appeared. Error message was: {e.Message}. HRESULT: 0x{e.HResult:X}");
 		}
 	}
 
@@ -603,7 +635,7 @@ public partial class MainForm : Form
 	{
 		using OpenFileDialog a = new()
 		{
-			Filter = "All Supported Formats (*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a)|*.mp3;*.flac;*.ogg;*.wav;*.wma;*.m4a",
+			Filter = $"All Supported Formats ({MetaSet.SupportedFormatsFilter})|{MetaSet.SupportedFormatsFilter}",
 			InitialDirectory = (MetaFile != null) ? Path.GetDirectoryName(MetaFile.Name) : string.Empty
 		};
 
@@ -634,7 +666,7 @@ public partial class MainForm : Form
 		try
 		{
 			MetaFile = TagLib.File.Create(location);
-			string filename = Path.GetFileName(MetaFile.Name);
+			string filename = Path.GetFileName(location);
 			Trace.WriteLine($"[Log] Creating file through TagLib#. File name is {filename}...");
 			Text = $"MetaSet — {filename}";
 			ReadTags();
@@ -655,7 +687,6 @@ public partial class MainForm : Form
 		MetaFile.Mode = TagLib.File.AccessMode.Read;
 		copyInformationAboutTrackToolStripMenuItem.Enabled = true;
 		closeToolStripMenuItem.Enabled = true;
-		extractACoverToolStripMenuItem.Enabled = true;
 		playATrackToolStripMenuItem.Enabled = true;
 		checkAPropertiesToolStripMenuItem.Enabled = true;
 		textBox1.Text = MetaFile.Tag.Title;
@@ -668,9 +699,9 @@ public partial class MainForm : Form
 		textBox9.Text = MetaFile.Tag.Copyright;
 		textBox8.Text = (MetaFile.Tag.Composers.Length > 0) ? MetaFile.Tag.Composers[0] : string.Empty;
 		textBox10.Text = MetaFile.Tag.Disc.ToString();
-		checkBox1.Checked = MetaFile.ID3v2Supported() ? ((TagLib.Id3v2.Tag)MetaFile.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1" : false;
+		checkBox1.Checked = MetaFile.ID3v2Supported() && ((TagLib.Id3v2.Tag)MetaFile.GetTag(TagLib.TagTypes.Id3v2)).GetTextAsString("TCMP") == "1";
 		checkBox1.Enabled = MetaFile.ID3v2Supported();
-		textBox11.Text = (MetaFile.Tag.Performers != null) ? string.Join(",", MetaFile.Tag.Performers) : string.Empty;
+		textBox11.Text = (MetaFile.Tag.Performers != null) ? string.Join(",", MetaFile.Tag.Performers ?? Array.Empty<string>()) : string.Empty;
 		textBox12.Text = MetaFile.Tag.BeatsPerMinute.ToString();
 		saveToolStripMenuItem.Enabled = true;
 		textBox13.Text = MetaFile.Tag.ISRC;
@@ -685,19 +716,48 @@ public partial class MainForm : Form
 		textBox19.Text = MetaFile.Tag.InitialKey;
 		textBox20.Text = MetaFile.Tag.Publisher;
 		deleteAnyTagsInFileToolStripMenuItem.Enabled = true;
-		if (MetaFile.Tag.Pictures.Length > 0)
+
+		delcoverbtn.Enabled = true;
+		loadfromcbbtn.Enabled = true;
+		loadfromimage.Enabled = true;
+		savetocbbtn.Enabled = true;
+		savetofilebtn.Enabled = true;
+
+		if (MetaFile.Tag.Pictures != null && MetaFile.Tag.Pictures.Length > 0)
 		{
+            if (MetaFile.Tag.Pictures[0].Type == TagLib.PictureType.NotAPicture && MetaFile.Tag.Pictures.Length > 1)
+            {
+				int first_img_index = 0;
+
+				for(int i = 0; i < MetaFile.Tag.Pictures.Length; i++)
+                {
+					if (MetaFile.Tag.Pictures[i].Type != TagLib.PictureType.NotAPicture)
+					{
+						first_img_index = i;
+						break;
+					}
+				}
+
+				MetaFile.Tag.Pictures = new TagLib.IPicture[]
+				{
+					MetaFile.Tag.Pictures[first_img_index]
+				};
+            }
+
 			if (MetaFile.Tag.Pictures[0].Data.Count < 1) return;
 
-			if (MetaFile.Tag.Pictures[0].MimeType == "image/jpg") MetaFile.Tag.Pictures[0].MimeType = "image/jpeg";
-			// Some players don't show cover if mime-type is "image/jpg", but all is normal if it's "image/jpeg"
+			if (MetaFile.Tag.Pictures[0].MimeType == "image/jpg")
+			{
+				MetaFile.Tag.Pictures[0].MimeType = "image/jpeg";
+				Trace.WriteLine("[Info] Mime-type of cover is \"image/jpg\", some players don't show cover if it's \"image/jpg\", so we're changing it to \"image/jpeg\".");
+			}
+			// Some players don't show cover if mime-type is "image/jpg", but everything is normal if it's "image/jpeg"
 
 			using (MemoryStream ms = new(MetaFile.Tag.Pictures[0].Data.Data)) pictureBox1.Image = Image.FromStream(ms);
 
 			if (MetaFile.Tag.Pictures[0].MimeType.Length < 1)
 			{
-				ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
-				MetaFile.Tag.Pictures[0].MimeType = codecs.First((ImageCodecInfo codec) => codec.FormatID == pictureBox1.Image.RawFormat.Guid).MimeType;
+				MetaFile.Tag.Pictures[0].MimeType = pictureBox1.Image.RawFormat.GetMimeType();
 			}
 			imagetype.Text = (MetaFile.Tag.Pictures[0].MimeType.Length > 0) ? MetaFile.Tag.Pictures[0].MimeType : string.Empty;
 			imagesize.Text = (Cover != null) ? (Cover.Size.Width + "x" + Cover.Size.Height) : string.Empty;
@@ -706,4 +766,18 @@ public partial class MainForm : Form
 
 		Trace.WriteLine("[Log] Tags are read and parsed...");
 	}
+
+    private void loadfromcbbtn_Click(object sender, EventArgs e)
+    {
+		using Image img = Clipboard.GetImage();
+
+		if (img == null) return;
+
+		using MemoryStream ms = new();
+		img.Save(ms, ImageFormat.Bmp);
+		// We're saving an image as BMP in memory stream
+		// (it's needed for changing the format from MemoryBmp to Bmp)
+
+		Cover = Image.FromStream(ms);
+    }
 }

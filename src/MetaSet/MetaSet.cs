@@ -1,4 +1,6 @@
-﻿namespace MetaSet
+﻿using System.Linq;
+
+namespace MetaSet
 {
     /// <summary>
     /// Common <see cref="MetaSet"/> class. It contains <see cref="global::MetaSet.MainForm"/> instance, e.t.c
@@ -8,7 +10,7 @@
         /// <summary>
         /// <see cref="MetaSet"/> version string constant
         /// </summary>
-        public const string Version = "1.5.3-stable";
+        public const string Version = "1.6-unstable";
 
         /// <summary>
         /// Instance of the <see cref="MainForm"/>
@@ -22,6 +24,11 @@
         {
             ".mp3", ".flac", ".ogg", ".wav", ".wma", ".m4a", ".aac", ".aiff"
         };
+
+        /// <summary>
+        /// Filter string, generated from <see cref="MetaSet.FormatSupport"/> array.
+        /// </summary>
+        public static string SupportedFormatsFilter { get; } = $"{string.Join(';', MetaSet.FormatSupport.Select((string str) => "*" + str))}";
 
         /// <summary>
         /// If you want to help me, then donate me there.

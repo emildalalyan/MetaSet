@@ -52,7 +52,6 @@
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractACoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -76,9 +75,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.changepict = new System.Windows.Forms.ToolStripMenuItem();
-            this.dthecov = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyimg = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadAnImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadfromimage = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadfromcbbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTheCoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savetofilebtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.savetocbbtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.delcoverbtn = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -109,6 +113,7 @@
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -116,11 +121,12 @@
             this.advancedToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
+            this.toolTip1.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.OpenCatalogMenuItem,
@@ -132,18 +138,17 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2, 0, 4, 0);
-            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // OpenCatalogMenuItem
             // 
-            this.OpenCatalogMenuItem.Name = "OpenCatalogMenuItem";
             resources.ApplyResources(this.OpenCatalogMenuItem, "OpenCatalogMenuItem");
+            this.OpenCatalogMenuItem.Name = "OpenCatalogMenuItem";
             this.OpenCatalogMenuItem.Click += new System.EventHandler(this.OpenCatalogMenuItem_Click);
             // 
             // saveToolStripMenuItem
@@ -172,17 +177,18 @@
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             // 
             // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // advancedToolStripMenuItem
             // 
+            resources.ApplyResources(this.advancedToolStripMenuItem, "advancedToolStripMenuItem");
             this.advancedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createNewInstanceToolStripMenuItem,
             this.copyInformationAboutTrackToolStripMenuItem,
@@ -191,12 +197,11 @@
             this.loadMetadataFromAFileToolStripMenuItem,
             this.deleteAnyTagsInFileToolStripMenuItem});
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            resources.ApplyResources(this.advancedToolStripMenuItem, "advancedToolStripMenuItem");
             // 
             // createNewInstanceToolStripMenuItem
             // 
-            this.createNewInstanceToolStripMenuItem.Name = "createNewInstanceToolStripMenuItem";
             resources.ApplyResources(this.createNewInstanceToolStripMenuItem, "createNewInstanceToolStripMenuItem");
+            this.createNewInstanceToolStripMenuItem.Name = "createNewInstanceToolStripMenuItem";
             this.createNewInstanceToolStripMenuItem.Click += new System.EventHandler(this.createNewInstanceToolStripMenuItem_Click);
             // 
             // copyInformationAboutTrackToolStripMenuItem
@@ -231,6 +236,7 @@
             // 
             // helpToolStripMenuItem
             // 
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.repositoryToolStripMenuItem,
@@ -240,96 +246,100 @@
             this.helpToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Padding = new System.Windows.Forms.Padding(6, 0, 4, 0);
-            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             // 
             // repositoryToolStripMenuItem
             // 
-            this.repositoryToolStripMenuItem.Name = "repositoryToolStripMenuItem";
             resources.ApplyResources(this.repositoryToolStripMenuItem, "repositoryToolStripMenuItem");
+            this.repositoryToolStripMenuItem.Name = "repositoryToolStripMenuItem";
             this.repositoryToolStripMenuItem.Click += new System.EventHandler(this.repositoryToolStripMenuItem_Click);
             // 
             // donateToolStripMenuItem
             // 
-            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             resources.ApplyResources(this.donateToolStripMenuItem, "donateToolStripMenuItem");
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
             this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // extractACoverToolStripMenuItem
-            // 
-            resources.ApplyResources(this.extractACoverToolStripMenuItem, "extractACoverToolStripMenuItem");
-            this.extractACoverToolStripMenuItem.Name = "extractACoverToolStripMenuItem";
-            this.extractACoverToolStripMenuItem.Click += new System.EventHandler(this.extractACoverToolStripMenuItem_Click);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // textBox1
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.toolTip1.SetToolTip(this.textBox1, resources.GetString("textBox1.ToolTip"));
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
             resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.Name = "textBox2";
+            this.toolTip1.SetToolTip(this.textBox2, resources.GetString("textBox2.ToolTip"));
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // textBox3
             // 
             resources.ApplyResources(this.textBox3, "textBox3");
             this.textBox3.Name = "textBox3";
+            this.toolTip1.SetToolTip(this.textBox3, resources.GetString("textBox3.ToolTip"));
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // textBox4
             // 
             resources.ApplyResources(this.textBox4, "textBox4");
             this.textBox4.Name = "textBox4";
+            this.toolTip1.SetToolTip(this.textBox4, resources.GetString("textBox4.ToolTip"));
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.toolTip1.SetToolTip(this.label5, resources.GetString("label5.ToolTip"));
             // 
             // textBox5
             // 
             resources.ApplyResources(this.textBox5, "textBox5");
             this.textBox5.Name = "textBox5";
+            this.toolTip1.SetToolTip(this.textBox5, resources.GetString("textBox5.ToolTip"));
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox17
             // 
             resources.ApplyResources(this.textBox17, "textBox17");
             this.textBox17.Name = "textBox17";
+            this.toolTip1.SetToolTip(this.textBox17, resources.GetString("textBox17.ToolTip"));
             this.textBox17.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
             // 
             // textBox6
@@ -366,56 +376,66 @@
             this.textBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBox6.Name = "textBox6";
+            this.toolTip1.SetToolTip(this.textBox6, resources.GetString("textBox6.ToolTip"));
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
+            this.toolTip1.SetToolTip(this.label6, resources.GetString("label6.ToolTip"));
             // 
             // textBox7
             // 
             resources.ApplyResources(this.textBox7, "textBox7");
             this.textBox7.Name = "textBox7";
+            this.toolTip1.SetToolTip(this.textBox7, resources.GetString("textBox7.ToolTip"));
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            this.toolTip1.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
             // 
             // textBox8
             // 
             resources.ApplyResources(this.textBox8, "textBox8");
             this.textBox8.Name = "textBox8";
+            this.toolTip1.SetToolTip(this.textBox8, resources.GetString("textBox8.ToolTip"));
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
+            this.toolTip1.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
             // 
             // textBox9
             // 
             resources.ApplyResources(this.textBox9, "textBox9");
             this.textBox9.Name = "textBox9";
+            this.toolTip1.SetToolTip(this.textBox9, resources.GetString("textBox9.ToolTip"));
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            this.toolTip1.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
             // 
             // textBox10
             // 
             resources.ApplyResources(this.textBox10, "textBox10");
             this.textBox10.Name = "textBox10";
+            this.toolTip1.SetToolTip(this.textBox10, resources.GetString("textBox10.ToolTip"));
             this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
+            this.toolTip1.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
             // 
             // pictureBox1
             // 
@@ -430,37 +450,72 @@
             // 
             // contextMenuStrip
             // 
+            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
             this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changepict,
-            this.dthecov,
-            this.copyimg,
-            this.extractACoverToolStripMenuItem});
+            this.loadAnImageToolStripMenuItem,
+            this.saveTheCoverToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.delcoverbtn});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            resources.ApplyResources(this.contextMenuStrip, "contextMenuStrip");
+            this.toolTip1.SetToolTip(this.contextMenuStrip, resources.GetString("contextMenuStrip.ToolTip"));
             // 
-            // changepict
+            // loadAnImageToolStripMenuItem
             // 
-            this.changepict.Name = "changepict";
-            resources.ApplyResources(this.changepict, "changepict");
-            this.changepict.Click += new System.EventHandler(this.changepict_Click);
+            resources.ApplyResources(this.loadAnImageToolStripMenuItem, "loadAnImageToolStripMenuItem");
+            this.loadAnImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadfromimage,
+            this.loadfromcbbtn});
+            this.loadAnImageToolStripMenuItem.Name = "loadAnImageToolStripMenuItem";
             // 
-            // dthecov
+            // loadfromimage
             // 
-            this.dthecov.Name = "dthecov";
-            resources.ApplyResources(this.dthecov, "dthecov");
-            this.dthecov.Click += new System.EventHandler(this.dthecov_Click);
+            resources.ApplyResources(this.loadfromimage, "loadfromimage");
+            this.loadfromimage.Name = "loadfromimage";
+            this.loadfromimage.Click += new System.EventHandler(this.changepict_Click);
             // 
-            // copyimg
+            // loadfromcbbtn
             // 
-            this.copyimg.Name = "copyimg";
-            resources.ApplyResources(this.copyimg, "copyimg");
-            this.copyimg.Click += new System.EventHandler(this.copyimg_Click);
+            resources.ApplyResources(this.loadfromcbbtn, "loadfromcbbtn");
+            this.loadfromcbbtn.Name = "loadfromcbbtn";
+            this.loadfromcbbtn.Click += new System.EventHandler(this.loadfromcbbtn_Click);
+            // 
+            // saveTheCoverToolStripMenuItem
+            // 
+            resources.ApplyResources(this.saveTheCoverToolStripMenuItem, "saveTheCoverToolStripMenuItem");
+            this.saveTheCoverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.savetofilebtn,
+            this.savetocbbtn});
+            this.saveTheCoverToolStripMenuItem.Name = "saveTheCoverToolStripMenuItem";
+            // 
+            // savetofilebtn
+            // 
+            resources.ApplyResources(this.savetofilebtn, "savetofilebtn");
+            this.savetofilebtn.Name = "savetofilebtn";
+            this.savetofilebtn.Click += new System.EventHandler(this.extractACoverToolStripMenuItem_Click);
+            // 
+            // savetocbbtn
+            // 
+            resources.ApplyResources(this.savetocbbtn, "savetocbbtn");
+            this.savetocbbtn.Name = "savetocbbtn";
+            this.savetocbbtn.Click += new System.EventHandler(this.copyimg_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // delcoverbtn
+            // 
+            resources.ApplyResources(this.delcoverbtn, "delcoverbtn");
+            this.delcoverbtn.Name = "delcoverbtn";
+            this.delcoverbtn.Click += new System.EventHandler(this.delcoverbtn_Click);
             // 
             // checkBox1
             // 
             resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
+            this.toolTip1.SetToolTip(this.checkBox1, resources.GetString("checkBox1.ToolTip"));
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -468,6 +523,7 @@
             // 
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
+            this.toolTip1.SetToolTip(this.label11, resources.GetString("label11.ToolTip"));
             // 
             // textBox11
             // 
@@ -481,12 +537,14 @@
             // 
             resources.ApplyResources(this.textBox12, "textBox12");
             this.textBox12.Name = "textBox12";
+            this.toolTip1.SetToolTip(this.textBox12, resources.GetString("textBox12.ToolTip"));
             this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
+            this.toolTip1.SetToolTip(this.label12, resources.GetString("label12.ToolTip"));
             // 
             // toolTip1
             // 
@@ -518,88 +576,103 @@
             resources.ApplyResources(this.textBox15, "textBox15");
             this.textBox15.Name = "textBox15";
             this.textBox15.Tag = "";
+            this.toolTip1.SetToolTip(this.textBox15, resources.GetString("textBox15.ToolTip"));
             this.textBox15.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
+            this.toolTip1.SetToolTip(this.label13, resources.GetString("label13.ToolTip"));
             // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
+            this.toolTip1.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
             // 
             // label15
             // 
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
+            this.toolTip1.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
             // 
             // textBox16
             // 
             resources.ApplyResources(this.textBox16, "textBox16");
             this.textBox16.Name = "textBox16";
+            this.toolTip1.SetToolTip(this.textBox16, resources.GetString("textBox16.ToolTip"));
             this.textBox16.TextChanged += new System.EventHandler(this.textBox16_TextChanged);
             // 
             // label16
             // 
             resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
+            this.toolTip1.SetToolTip(this.label16, resources.GetString("label16.ToolTip"));
             // 
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
+            this.toolTip1.SetToolTip(this.label17, resources.GetString("label17.ToolTip"));
             // 
             // textBox18
             // 
             resources.ApplyResources(this.textBox18, "textBox18");
             this.textBox18.Name = "textBox18";
+            this.toolTip1.SetToolTip(this.textBox18, resources.GetString("textBox18.ToolTip"));
             this.textBox18.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
+            this.toolTip1.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
             // 
             // textBox19
             // 
             resources.ApplyResources(this.textBox19, "textBox19");
             this.textBox19.Name = "textBox19";
+            this.toolTip1.SetToolTip(this.textBox19, resources.GetString("textBox19.ToolTip"));
             this.textBox19.TextChanged += new System.EventHandler(this.textBox19_TextChanged);
             // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
+            this.toolTip1.SetToolTip(this.label19, resources.GetString("label19.ToolTip"));
             // 
             // textBox20
             // 
             resources.ApplyResources(this.textBox20, "textBox20");
             this.textBox20.Name = "textBox20";
+            this.toolTip1.SetToolTip(this.textBox20, resources.GetString("textBox20.ToolTip"));
             this.textBox20.TextChanged += new System.EventHandler(this.textBox20_TextChanged);
             // 
             // label20
             // 
             resources.ApplyResources(this.label20, "label20");
             this.label20.Name = "label20";
+            this.toolTip1.SetToolTip(this.label20, resources.GetString("label20.ToolTip"));
             // 
             // imagetype
             // 
             resources.ApplyResources(this.imagetype, "imagetype");
             this.imagetype.BackColor = System.Drawing.Color.Transparent;
             this.imagetype.Name = "imagetype";
+            this.toolTip1.SetToolTip(this.imagetype, resources.GetString("imagetype.ToolTip"));
             // 
             // imagesize
             // 
             resources.ApplyResources(this.imagesize, "imagesize");
             this.imagesize.BackColor = System.Drawing.Color.Transparent;
             this.imagesize.Name = "imagesize";
+            this.toolTip1.SetToolTip(this.imagesize, resources.GetString("imagesize.ToolTip"));
             // 
             // MainForm
             // 
-            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.imagesize);
             this.Controls.Add(this.imagetype);
@@ -651,6 +724,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.toolTip1.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.menuStrip1.ResumeLayout(false);
@@ -698,12 +772,9 @@
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem changepict;
-        private System.Windows.Forms.ToolStripMenuItem dthecov;
+        private System.Windows.Forms.ToolStripMenuItem delcoverbtn;
         public System.Windows.Forms.ToolStripMenuItem copyInformationAboutTrackToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem extractACoverToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem playATrackToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copyimg;
         public System.Windows.Forms.ToolStripMenuItem checkAPropertiesToolStripMenuItem;
         public System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label11;
@@ -736,6 +807,13 @@
         public System.Windows.Forms.ToolStripMenuItem deleteAnyTagsInFileToolStripMenuItem;
         public System.Windows.Forms.Label imagesize;
         private System.Windows.Forms.ToolStripMenuItem OpenCatalogMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadAnImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadfromimage;
+        private System.Windows.Forms.ToolStripMenuItem loadfromcbbtn;
+        private System.Windows.Forms.ToolStripMenuItem saveTheCoverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem savetofilebtn;
+        private System.Windows.Forms.ToolStripMenuItem savetocbbtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

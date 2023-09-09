@@ -85,13 +85,10 @@ namespace MetaSet
         protected MessageType GetMessageTypeAndClearString(ref string message)
         {
             if (string.IsNullOrEmpty(ErrorMessageBeginning)) throw new AggregateException("Beginning of error messages cannot be null or empty");
-
             if (string.IsNullOrEmpty(WarningMessageBeginning)) throw new AggregateException("Beginning of warning messages cannot be null or empty");
-
             if (string.IsNullOrEmpty(InformationMessageBeginning)) throw new AggregateException("Beginning of info messages cannot be null or empty");
-
             if (string.IsNullOrEmpty(LogMessageBeginning)) throw new AggregateException("Beginning of log messages cannot be null or empty");
-
+            
             if (message == null) throw new ArgumentNullException(nameof(message), "Message cannot be null.");
 
             if (message.StartsWith(ErrorMessageBeginning, StringComparison.InvariantCulture))
