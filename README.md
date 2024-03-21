@@ -15,7 +15,7 @@ MetaSet requires **.NET 6** for its work.
 You can download **.NET 6** on Microsoft [official site](https://dotnet.microsoft.com/en-us/download/dotnet).
 But, you need to download .NET **Desktop Runtime** or **SDK**, and not just **Runtime**, and its architecture should correspond to downloaded **MetaSet**.
 
-If your computer is running Windows 10/11, then you can install use this command instead:
+If your computer is running Windows 10/11, then you can install it using this command instead:
 ```bash
   winget install Microsoft.DotNet.DesktopRuntime.6
 ```
